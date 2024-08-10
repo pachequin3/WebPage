@@ -4,7 +4,7 @@ import './ContactLinks.css';
 // Datos de contactos
 const contacts = [
   { name: 'Jaime Flores', role: 'Gerente de Ventas', email: 'jaimefloresfernandez60@gmail.com', phone: '+591 123 456 789' }, // Nacional
-  { name: 'Tatiana Suxo', role: 'Directora de Marketing', email: 'tsuxo24@gamil.com', phone: '+591 987 654 321' }, // Internacional
+  { name: 'Tatiana Suxo', role: 'Directora de Marketing', email: 'tsuxo24@gmail.com', phone: '+591 987 654 321' }, // Internacional
   { name: 'Carlos Pacheco', role: 'Desarrollador Web', email: 'cpacheco@gmail.com', phone: '+591 111 222 333' },
   { name: 'Julio Huanco', role: 'Asistente Administrativo', email: 'juliocesarhuancos@gmail.com', phone: '+591 444 555 666' }
 ];
