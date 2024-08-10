@@ -1,0 +1,63 @@
+@import url('https://fonts.googleapis.com/css2?family=Yusei+Magic&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+.Contactanos{
+   
+  text-align: center;
+  width: 100%;
+  background-color: 
+  rgba(249, 255, 254, 1);
+  font-family:  Circular Std;
+
+}
+
+/* Estilo para el título principal */
+.Titulot{
+  width: 100%; /* Asegura que el contenedor ocupe todo el ancho disponible */
+  padding: 0; /* Opcional: Ajusta el espacio interno del contenedor si es necesario */
+  margin: 0; /* Opcional: Ajusta el margen del contenedor si es necesario */
+  display: flex; /* Utiliza Flexbox para alinear los elementos */
+  justify-content: center; /* Centra el contenido horizontalmente */
+  align-items: center; /* Centra el contenido verticalmente */
+  background: linear-gradient(135deg, rgb(32, 235, 201) 0%, rgba(112, 246, 224, 0.5) 100%),
+  url('data:image/svg+xml;utf8,<svg width="100" height="100" xmlns="http://www.w3.org/2000/svg"><circle cx="50" cy="50" r="30" fill="rgba(96, 225, 203, 0.2)" /></svg>');
+}
+
+.Titulot h1{
+  font-family: Circular Std;
+  Size: 58px;
+  line-height: 65.25px;
+  font-weight: 900;
+  
+}
+
+  
+  /* Estilo para centrar el contenido */
+  .container {
+    max-width: 800px;
+    margin: 0 auto;
+    font-family: DM Sans;
+
+  }
+  
+  /* Estilo de enlaces */
+  a {
+    color: #007BFF;
+    text-decoration: none;
+  }
+  
+  a:hover {
+    text-decoration: underline;
+  }
+.contenedorContacto{
+  display: flex;
+  width: 100%;
+  flex-direction: row;
+  justify-content: space-evenly;
+  align-items: center;
+}
+.contenedorInformacion{
+  width: 50%;
+}
+.contenedorFormulario{
+  width: 50%;
+}

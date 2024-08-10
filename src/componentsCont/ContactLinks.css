@@ -1,0 +1,67 @@
+.contact-links {
+  padding: 20px;
+}
+
+.contact-links h2 {
+  margin-bottom: 20px;
+}
+
+.contact-links h3 {
+  margin-top: 20px;
+}
+
+.contact-links ul {
+  list-style: none;
+  padding: 0;
+}
+
+.contact-links li {
+  margin-bottom: 10px; /* Espaciado consistente */
+}
+
+.contact-info {
+  display: flex;
+  align-items: center;
+  background-color:rgba(233, 251, 248, 1)
+  ;
+
+}
+
+.contact-details {
+  margin-right: 10px; /* Ajusta según sea necesario */
+}
+
+.contact-name {
+  font-weight: bold;
+}
+
+.contact-role {
+  font-style: italic;
+  color: #555;
+}
+
+.contact-info a {
+  text-decoration: none;
+  color: inherit;
+  display: flex;
+  align-items: center;
+}
+
+.contact-info .icon {
+  margin-right: 10px;
+  width: 24px; /* Ajusta el tamaño de la imagen si es necesario */
+  height: 24px; /* Ajusta el tamaño de la imagen si es necesario */
+}
+
+/* Estilo para dispositivos móviles */
+@media (max-width: 768px) {
+  .contact-details {
+    display: none; /* Oculta nombres y cargos en móviles */
+  }
+
+  .phone-item {
+    display: flex;
+    text-align: center; 
+    /* Muestra todos los números de teléfono en móviles */
+  }
+}

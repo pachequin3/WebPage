@@ -4,14 +4,11 @@ import Fotter from './Fotter.jsx'
 import Header from './Header.jsx'
 import Home from './Home.jsx'
 import PageServices from './PageServices.jsx'
+import Contactanos from './Contactanos.jsx'
+import App from './App.jsx'
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
-    <Header/>
-    <PageServices/>
-    <Fotter/>
-    
-    
-  
-  </StrictMode>,
+    <App/>
+  </StrictMode>
 )
