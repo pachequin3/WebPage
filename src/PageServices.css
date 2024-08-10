@@ -1,0 +1,162 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;700&display=swap');
+.Container{
+    background-color: #60E1CB;
+    width: 1500px;
+    height: 360px;
+}
+.textcontainer{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    
+    
+
+}
+.textcontainer p{
+    font-family: DM Sans;
+    font-size: 20px;
+    line-height: 25px;
+    width: 540px;
+    text-align: center;
+    
+    
+ 
+}
+.textcontainer h1{
+    font-family: Circular Std;
+    font-size: 45px;
+    width: 900px;
+    text-align: center;
+    
+}
+.Containercenter{
+    width: 1400px;
+    height: 2000px;
+    
+    
+
+}
+.subcontainer{
+    background-color: #E9FBF8;
+    width: 1200px;
+    height: 1900px;
+    border-radius: 40px ;
+    position: relative;
+    left: 125px;
+    
+}
+.textsubcontainer{
+    width: 600px;
+    position: relative;
+    left: 350px;
+    top: 100px;
+}
+.textsubcontainer h1{
+    font-family: Circular Std;
+    font-size: 48px;
+    line-height: 20px;
+    text-align: center;
+}
+.textsubcontainer p{
+    font-family: DM Sans;
+    font-size: 20px;
+    line-height: 30px;
+    text-align: center;
+
+}
+.containerservices{
+    display: flex;
+    flex-direction: row;
+    padding: 100px;
+    flex-wrap: wrap;
+    justify-content: space-around;
+
+}
+.services{
+    width: 290px;
+    height: 360px;
+    border-top: 5px solid  #60E1CB;
+    background-color:  #FDFDFF;
+    border-radius: 20px ;
+    
+}
+.service h2{
+    font-family: Circular Std;
+    font-size: 20px;
+    text-align: center;
+
+}
+.services p{
+    font-family: DM Sans;
+    font-size: 16px;
+    line-height: 20.83px;
+    text-align: center;
+
+}
+.services img{
+    width: 22%;
+    height: 20%;
+    left: 200px;
+}
+.more-text {
+    display: none; 
+}
+
+.read-more-btn {
+    background-color: #007BFF;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    border-radius: 5px;
+    margin-top: 10px;
+}
+
+.read-more-btn .icon {
+    margin-left: 5px;
+    font-size: 0.8em;
+}
+
+.read-more-btn.open .icon {
+    transform: rotate(180deg); 
+}
+.containerwork
+{
+    width: 1500px;
+    height: 280px;
+    top: 1906px;
+    background: #60E1CB;
+}
+.containerwork h1{
+    font-family: Circular Std;
+    font-size: 48px;
+    font-weight: 700;
+    line-height: 60.72px;
+    text-align: center;
+    
+}
+.containerwork p{
+    font-family: DM Sans;
+    font-size: 24px;
+    font-weight: 400;
+    line-height: 24.53px;
+    text-align: center;
+
+
+}
+.email-button{
+    width: 200px;
+    height: 84px;
+    top: 334.5px;
+    border-radius: 20px;
+    background: #292525;
+    text-align: center;
+    font-family: Poppins;
+    font-size: 22px;
+    font-weight: 600;
+    line-height: 33px;
+    text-align: center;
+}
+.botoncontainer{
+    display: flex;
+}
