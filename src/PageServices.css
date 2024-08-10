@@ -1,8 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;700&display=swap');
 .Container{
     background-color: #60E1CB;
-    width: 1500px;
-    height: 360px;
+   
 }
 .textcontainer{
     display: flex;
@@ -159,4 +158,5 @@
 }
 .botoncontainer{
     display: flex;
+    justify-content: center;
 }

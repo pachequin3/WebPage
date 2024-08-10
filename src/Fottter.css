@@ -1,0 +1,40 @@
+.conteinerFotter{
+    font-family: 'Yusei Magic';
+    background-color: #60E1CB;
+}
+.logo img{
+    Width:250px;
+    height:250 px;
+    border-radius: 50%;
+}
+.logo{
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+}
+.textoFotther{
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+}
+.iconoss {
+    
+    color: #fff;
+    text-align: center;
+    padding: 20px;
+  }
+  
+  .iconoss a {
+    margin: 0 15px;
+    color: #fff;
+    text-decoration: none;
+  }
+  
+  .iconoss a:hover {
+    color: #ddd;
+  }
+  
+  .iconoss i {
+    font-size: 24px;
+  }
+  
