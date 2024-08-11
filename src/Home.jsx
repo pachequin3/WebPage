@@ -1,8 +1,12 @@
 import React from 'react'
 import './Home.css'
+import Header from './Header';
+import Fotter from './Fotter';
 export default function Home() {
   return (
+    
     <div className='ContainerMain'>
+        <Header/>
         <div className='containerHomeMain'>
             <div>
             <h1>Transformamos Ideas en Soluciones Tecnológicas</h1>
@@ -74,6 +78,7 @@ export default function Home() {
             </div>
 
         </div>
+        <Fotter/>
     </div>
   )
 }

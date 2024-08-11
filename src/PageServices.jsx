@@ -10,6 +10,8 @@ import imagen5 from './assets/images/imagen6.png'
 import imagen6 from './assets/images/imagen7.png'
 import imagen7 from './assets/images/imagen8.png'
 import imagen8 from './assets/images/imagen9.png'
+import Header from './Header';
+import Fotter from './Fotter';
 function PageServices() {
     const handleClick = () => {
         window.open('https://mail.google.com/mail/?view=cm&fs=1&to=jaimefloresfernandez60@gmail.com', '_blank');
@@ -17,6 +19,7 @@ function PageServices() {
 
   return (
     <div className='Container'> 
+        <Header/>
         <div className='textcontainer'>
             <h1>Qué podemos ofrecer a tu negocio.</h1>
             <p>Primeramente mencionamos que la empresa AutoSiste Bolicia trabaja o abarca con la implementacion de tecnologia, tanto en el area de servicios mecanicos y otros</p>
@@ -143,6 +146,8 @@ function PageServices() {
             </div>
 
         </div>
+
+        <Fotter/>
     
     </div>
     

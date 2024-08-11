@@ -3,9 +3,12 @@ import ContactLinks from './componentsCont/ContactLinks';
 import ContactInfo from './componentsCont/ContactInfo';
 import ContactForm from './componentsCont/ContactForm';
 import './Contactanos.css';
+import Header from './Header';
+import Fotter from './Fotter';
 function Contactanos() {
     return (
         <div className='Contactanos'>
+            <Header/>
            <div className='Titulot'> 
               <h1>CONÉCTATE CON NOSOTROS PARA SOLUCIONES INNOVADORAS</h1>
             </div> 
@@ -20,7 +23,7 @@ function Contactanos() {
                 
             </div>
             
-           
+           <Fotter/>
         </div>
     );
 }
