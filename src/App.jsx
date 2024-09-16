@@ -13,9 +13,12 @@ function App() {
 
   return (
     <Router>
-  
-
-  <Home/>
+  <Routes>
+        <Route path='/Inicio' element={<Home />} />
+        <Route path='/Nosotros' element={<Nosotros />} />
+        <Route path='/Servicios' element={<PageServices />} />
+        <Route path='/Contactanos' element={<Contactanos />} />
+      </Routes>
     </Router>
   );
 }
