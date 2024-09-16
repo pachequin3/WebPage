@@ -17,9 +17,21 @@ display: flex;
 }
 
 .logoHeader img{
-    Width:50px;
+    Width:80px;
     height:30 px;
     border-radius: 50%;
     
 
+}
+.letra1{
+    font-size: 10px;
+}
+.letra2{
+    font-size: 10px;
+}
+.letra3{
+    font-size: 10px;
+}
+.letra4{
+    font-size: 10px;
 }

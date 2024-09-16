@@ -2,13 +2,15 @@ import imagen from './assets/images/1.jpeg'
 import image from './assets/images/2.jpeg'
 import React from 'react';
 import './Nosotros.css';
-
+import Header from './Header';
+import Fotter from './Fotter';
 function Nosotros() {
   return (
     <div>
      
-
+      <Header/>
       <section id="inicio" className="hero-section">
+
         <h1 className="hero-title">Auto asiste Bolivia</h1>
         <p className="hero-subtitle">Tu solución confiable en el mercado.</p>
       </section>
@@ -61,7 +63,7 @@ function Nosotros() {
     </div>
     </div>
       </section>
-
+    <Fotter/>
     </div>
   );
 }

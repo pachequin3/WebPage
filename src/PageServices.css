@@ -148,7 +148,7 @@
     height: 84px;
     top: 334.5px;
     border-radius: 20px;
-    background: #292525;
+    background: #FDFDFF;
     text-align: center;
     font-family: Poppins;
     font-size: 22px;
@@ -159,4 +159,5 @@
 .botoncontainer{
     display: flex;
     justify-content: center;
+
 }

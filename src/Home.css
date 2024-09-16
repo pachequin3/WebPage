@@ -16,6 +16,11 @@ Height:
     background-color: #60E1CB;
     width: 100%;
     align-items: center;
+    padding: 20px;
+    
+}
+.tituloValores{
+    margin-left: 70px;
 }
 .numero1{
     background-color: white;

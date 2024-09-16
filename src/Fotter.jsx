@@ -10,7 +10,7 @@ export default function Fotter() {
         <div className='textoFotther'>
             <div>
             <h2>Llamanos</h2>
-            <h3>77707809</h3>
+            <h3>(+591) 77707809</h3>
             </div>
             <div>
             <h1>Envianos un mensaje</h1>
