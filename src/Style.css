@@ -1,0 +1,12 @@
+body {
+    margin-left: 50px;  /* Cambia el valor según lo que necesites */
+    margin-right: 50px; /* Cambia el valor según lo que necesites */
+    background-color: hwb(219 4% 84%); 
+}
+:root{
+    background-color: hwb(219 4% 84%); 
+    font-family: Arial, sans-serif;
+}
+.h2{
+    font-size: 2rem;
+}

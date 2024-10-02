@@ -3,35 +3,83 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
 
 .headerContenedor{
-background-color: #60E1CB;
-display: flex;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: hsl(218, 62%, 10%); /* Color de fondo azul oscuro */
+    margin-left: 50px;  /* Cambia el valor según lo que necesites */
+    margin-right: 50px; /* Cambia el valor según lo que necesites */
+   
 
 }
 .TextoHeader{
     display: flex;
     justify-content: space-evenly;
-    font-family: 'Yusei Magic';
-    font-size: 7px;
+    font-family: Arial, sans-serif;
+    font-size: 16px;
     width: 100%;
     align-items: center;
+    
 }
 
 .logoHeader img{
-    Width:80px;
-    height:30 px;
-    border-radius: 50%;
+    Width:150px;
     
 
 }
 .letra1{
-    font-size: 10px;
+    font-size: 16px;
+    color: white;
 }
 .letra2{
-    font-size: 10px;
+    font-size: 16px;
 }
 .letra3{
-    font-size: 10px;
+    font-size: 16px;
 }
 .letra4{
-    font-size: 10px;
+    font-size: 16px;
+}
+.header__social {
+    display: flex; /* Asegura que los elementos sean flexibles */
+    justify-content: flex-end; /* Alinea los iconos a la derecha */
+    align-items: center; /* Centra verticalmente los iconos */
+    margin-right: 20px;
+  }
+  
+  .header__social a {
+    color: #FFD700; /* Color dorado para los iconos */
+    margin-left: 15px; /* Espacio entre los iconos */
+    font-size: 1.5rem; /* Tamaño de los iconos */
+    text-decoration: none; /* Sin subrayado */
+    transition: color 0.3s; /* Transición suave para el cambio de color */
+  }
+  
+  .header__social a:hover {
+    color: #fff; /* Cambia el color al pasar el ratón */
+  }
+  .TextoHeader {
+    text-align: center; /* Centrar el texto, si lo deseas */
+}
+
+.letra1 h1, .letra2 h1, .letra3 h1, .letra4 h1 {
+    color: #3498db; /* Cambia este valor por el color que desees */
+    transition: color 0.3s; /* Añade una transición suave para el color (opcional) */
+}
+
+/* Ejemplo de color diferente para cada letra */
+.letra1 h1 {
+    color: white;/* Rojo */
+}
+
+.letra2 h1 {
+    color: white; /* Verde */
+}
+
+.letra3 h1 {
+    color: white; /* Naranja */
+}
+
+.letra4 h1 {
+    color: white; /* Morado */
 }

@@ -1,0 +1,30 @@
+/* src/App.css */
+.app-container {
+    text-align: center;
+  }
+  
+  .service-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+    padding: 20px;
+  }
+  
+  .service-card {
+    background-color: #1E2A38;
+    color: white;
+    padding: 20px;
+    border-radius: 10px;
+    text-align: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    transition: transform 0.2s;
+  }
+  
+  .service-card:hover {
+    transform: scale(1.05);
+  }
+  
+  .icon {
+    font-size: 50px;
+    margin-bottom: 10px;
+  }

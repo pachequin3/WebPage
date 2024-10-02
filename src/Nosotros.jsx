@@ -6,63 +6,83 @@ import Header from './Header';
 import Fotter from './Fotter';
 function Nosotros() {
   return (
-    <div>
-     
-      <Header/>
-      <section id="inicio" className="hero-section">
-
-        <h1 className="hero-title">Auto asiste Bolivia</h1>
-        <p className="hero-subtitle">Tu solución confiable en el mercado.</p>
-      </section>
-
-      <section id="nosotros" className="content-section">
-        <h2>Nosotros</h2>
-        <p>En AutoAsiste Bolivia, somos apasionados por la tecnología y el desarrollo de soluciones
-           digitales que marcan la diferencia, nos especializamos en la creación de aplicaciones y software innovador que impulsa la eficiencia y mejora la experiencia del usuario, nuestro equipo, conformado por desarrolladores y creativos talentosos, se dedica a diseñar productos que se adaptan a las necesidades del mercado actual, ya sean aplicaciones móviles, juegos interactivos o sistemas personalizados.</p>
-      </section>
-
-      <div className="mission-vision-container">
-        <section id="mision" className="content-section mission-section">
-          <div className="text-container">
-            <h2>Nuestra Misión</h2>
-            <p>Desarrollar soluciones tecnológicas innovadoras que respondan a las necesidades
-               de nuestros clientes, tanto en el área de servicios mecánicos como en otras áreas 
-               de software, incluyendo el desarrollo de juegos y aplicaciones especializadas.
-                Nos comprometemos a ofrecer productos de alta calidad que mejoren la eficiencia,
-                 la experiencia del usuario y el éxito comercial de nuestros clientes.</p>
-          </div>
-          <div className="image-placeholder">[<img src={imagen} alt=""/>]</div>
+    
+    <div className='contenedor_p'>
+     <Header/>
+     <div className="container">
+        {/* Contenido principal */}
+        <section className="intro">
+          <h1>AutoAsiste Bolivia</h1>
+          <p>En AutoAsiste Bolivia, nos apasiona la tecnología y desarrollamos soluciones digitales innovadoras, nuestro equipo de desarrolladores crean aplicaciones que mejoran la eficiencia y la experiencia del usuario, adaptándose a las necesidades del mercado actual.</p>
         </section>
 
-        <section id="vision" className="content-section vision-section">
-          <div className="image-placeholder">[<img src={image} alt=""/>]</div>
-          <div className="text-container">
+        <section className="mission-vision">
+          <div className="mission">
+            <h2>Nuestra Misión</h2>
+            <p>
+            Desarrollar soluciones tecnológicas innovadoras que aborden las necesidades de los clientes en servicios mecánicos y software, incluyendo juegos y aplicaciones especializadas, con un compromiso a la calidad y el éxito comercial.
+            </p>
+          </div>
+          <div className="vision">
             <h2>Nuestra Visión</h2>
-            <p>Convertirnos en una empresa líder en desarrollo de software en Bolivia,
-               reconocida por nuestra capacidad de innovación y calidad en la creación
-                de soluciones tecnológicas integrales para diversas industrias, 
-                con un enfoque especial en la transformación digital de servicios 
-                mecánicos y el desarrollo de entretenimiento digital.</p>
+            <p>
+            Ser líderes en desarrollo de software en Bolivia, destacados por nuestra innovación y calidad en soluciones tecnológicas integrales, centrándonos en la transformación digital de servicios mecánicos y el entretenimiento digital.
+            </p>
+          </div>
+        </section>
+
+        <section className="quienes-somos">
+          <h2>Quiénes Somos</h2>
+          <div className="steps">
+            <div className="step">
+              <i className="fas fa-lightbulb"></i>
+              <h3>Tu Idea</h3>
+              <p>Para que en AutoAsiste sepamos que somos una buena opción para su proyecto, siempre comenzamos con preguntas de selección para asegurarnos de que somos una buena opción para su empresa.</p>
+            </div>
+            <div className="step">
+              <i className="fas fa-users"></i>
+              <h3>Reunión de Estrategia</h3>
+              <p>Esta reunión será una reunión en la que juntos repasaremos nuestra estrategia propuesta sobre cómo podemos alcanzar los objetivos de su sitio web. Aquí estableceremos un sistema de actualización del proyecto donde podrás seguir todo el proceso de principio a fin.</p>
+            </div>
+            <div className="step">
+              <i className="fas fa-sitemap"></i>
+              <h3>Marco ágil y Scrum</h3>
+              <p>En este paso tendremos una reunión de equipo con el director del proyecto y el desarrollador y diseñador principal. Luego trabajaremos utilizando un marco ágil y scrum para aseguramos de entregar su proyecto a tiempo y dentro del presupuesto.</p>
+            </div>
+            <div className="step">
+              <i className="fas fa-desktop"></i>
+              <h3>Su sitio web se activa</h3>
+              <p>Se realizarán las comprobaciones finales del sitio web, nos aseguraremos de que todos los píxeles de seguimiento, los enlaces y la interfaz de usuario sean compatibles con todos los diferentes dispositivos. </p>
+            </div>
+          </div>
+        </section>
+
+        <section className="experts">
+          <h2>Nuestros Expertos</h2>
+          <div className="expert-list">
+            <div className="expert">
+              <img src="/src/assets/images/Pacheco.jpeg" alt="Carlos Miguel" />
+              <h3>Carlos Miguel Pacheco Sanchez</h3>
+              <p>Analista</p>
+            </div>
+            <div className="expert">
+              <img src="/src/assets/images/Cesarin.jpeg" alt="Julio Cesar" />
+              <h3>Julio Cesar Huanco Yujra</h3>
+              <p>Diseñador</p>
+            </div>
+            <div className="expert">
+              <img src="/src/assets/images/jaime.jpeg" alt="Jaime Antonio" />
+              <h3>Jaime Antonio Flores Fernandez</h3>
+              <p>Programador</p>
+            </div>
+            <div className="expert">
+              <img src="/src/assets/images/tati.png" alt="Tatiana Karina" />
+              <h3>Tatiana Karina Suxo Suxo</h3>
+              <p>Programadora</p>
+            </div>
           </div>
         </section>
       </div>
-
-      <section id="Valores" className="content-section">
-      <div>
-      <h2>Valores</h2>
-      <div className="valores-container">
-      <div className="valor">Innovación</div>
-      <div className="valor">Calidad</div>
-      <div className="valor">Flexibilidad</div>
-      <div className="valor">Integridad</div>
-      <div className="valor">Etica</div>
-      <div className="valor">Compromiso con el Cliente</div>
-      <div className="valor">Responsabilidad Social</div>
-      <div className="valor">Moral</div>
-      <div className="valor">Lealtad</div>
-    </div>
-    </div>
-      </section>
     <Fotter/>
     </div>
   );
