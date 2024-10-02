@@ -10,12 +10,19 @@
     "preview": "vite preview"
   },
   "dependencies": {
+<<<<<<< HEAD
     "@fortawesome/fontawesome-free": "^6.6.0",
+=======
+>>>>>>> 32b8038d69da41463c6485a0a14276e9e95f39eb
     "firebase": "^10.14.0",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
     "react-google-recaptcha": "^3.1.0",
+<<<<<<< HEAD
     "react-router-dom": "^6.26.2"
+=======
+    "react-router-dom": "^6.26.0"
+>>>>>>> 32b8038d69da41463c6485a0a14276e9e95f39eb
   },
   "devDependencies": {
     "@eslint/js": "^9.8.0",
