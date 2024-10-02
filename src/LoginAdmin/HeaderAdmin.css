@@ -1,0 +1,18 @@
+.headerAdmin {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #D1D5DB;
+    padding: 10px 20px;
+  }
+  
+  .headerAdmin-left .logo {
+    height: 50px;
+  }
+  
+  .headerAdmin-right .icon {
+    width: 25px;
+    height: 25px;
+    margin-left: 15px;
+    cursor: pointer;
+  }
