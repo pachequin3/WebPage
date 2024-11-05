@@ -1,61 +1,39 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { getProveedores, deleteProveedor, searchProveedores } from '../services/proveedorService';
 import '../styles/ProveedoresList.css';
 
 function ProveedoresList() {
-  const [proveedores, setProveedores] = useState([]);
-  const [searchTerm, setSearchTerm] = useState('');
-
-  useEffect(() => {
-    fetchProveedores();
-  }, []);
-
-  const fetchProveedores = async () => {
-    try {
-      const data = await getProveedores();
-      setProveedores(data);
-    } catch (error) {
-      console.error("Error fetching proveedores:", error);
+  const [proveedores] = useState([
+    {
+      id: 1,
+      nombreEmpresa: 'Empresa A',
+      tipoServicio: 'mecanico',
+      descripcionServicio: 'Servicio mecánico general',
+      direccion: 'Calle Principal 123',
+      horarioAtencion: '9:00 - 18:00',
+      nombreProveedor: 'Juan Pérez',
+      celular: '12345678',
+      email: 'juan@empresa.com'
+    },
+    {
+      id: 2,
+      nombreEmpresa: 'Empresa B',
+      tipoServicio: 'electricista',
+      descripcionServicio: 'Servicios eléctricos',
+      direccion: 'Avenida Central 456',
+      horarioAtencion: '8:00 - 17:00',
+      nombreProveedor: 'María López',
+      celular: '98765432',
+      email: 'maria@empresab.com'
     }
-  };
-
-  const handleDelete = async (id) => {
-    if (window.confirm('¿Estás seguro de que quieres eliminar este proveedor?')) {
-      try {
-        await deleteProveedor(id);
-        fetchProveedores(); // Recargar la lista después de eliminar
-      } catch (error) {
-        console.error("Error deleting proveedor:", error);
-      }
-    }
-  };
-
-  const handleSearch = async () => {
-    if (searchTerm) {
-      try {
-        const results = await searchProveedores(searchTerm);
-        setProveedores(results);
-      } catch (error) {
-        console.error("Error searching proveedores:", error);
-      }
-    } else {
-      fetchProveedores();
-    }
-  };
+  ]);
 
   return (
     <div className="proveedores-list">
       <h2>Lista de Proveedores</h2>
       
       <div className="search-bar">
-        <input 
-          type="text" 
-          placeholder="Buscar proveedor" 
-          value={searchTerm}
-          onChange={(e) => setSearchTerm(e.target.value)}
-        />
-        <button onClick={handleSearch}>Buscar</button>
+        <input type="text" placeholder="Buscar proveedor" />
       </div>
 
       <div className="table-container">
@@ -81,16 +59,12 @@ function ProveedoresList() {
                 <td>
                   <Link 
                     to={`/editar-proveedor/${proveedor.id}`} 
+                    state={{ proveedor }} 
                     className="btn-editar"
                   >
                     Editar
                   </Link>
-                  <button 
-                    className="btn-eliminar"
-                    onClick={() => handleDelete(proveedor.id)}
-                  >
-                    Eliminar
-                  </button>
+                  <button className="btn-eliminar">Eliminar</button>
                 </td>
               </tr>
             ))}

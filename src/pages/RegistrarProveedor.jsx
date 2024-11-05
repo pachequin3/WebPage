@@ -1,10 +1,7 @@
 import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
-import { addProveedor } from '../services/proveedorService';
 import '../styles/RegistrarProveedor.css';
 
 function RegistrarProveedor() {
-  const navigate = useNavigate();
   const [formData, setFormData] = useState({
     nombreEmpresa: '',
     tipoServicio: '',
@@ -13,19 +10,14 @@ function RegistrarProveedor() {
     horarioAtencion: '',
     nombreProveedor: '',
     celular: '',
-    email: ''
+    email: '',
+    password: '',
+    confirmPassword: ''
   });
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = (e) => {
     e.preventDefault();
-    try {
-      await addProveedor(formData);
-      alert('Proveedor registrado correctamente');
-      navigate('/proveedores');
-    } catch (error) {
-      console.error('Error:', error);
-      alert('Error al registrar proveedor');
-    }
+    console.log('Datos del formulario:', formData);
   };
 
   const handleChange = (e) => {
@@ -49,7 +41,6 @@ function RegistrarProveedor() {
               name="nombreEmpresa"
               value={formData.nombreEmpresa}
               onChange={handleChange}
-              required
             />
           </div>
           
@@ -59,7 +50,6 @@ function RegistrarProveedor() {
               name="tipoServicio"
               value={formData.tipoServicio}
               onChange={handleChange}
-              required
             >
               <option value="">Seleccione un tipo de servicio</option>
               <option value="mecanico">Mecánico</option>
@@ -76,7 +66,6 @@ function RegistrarProveedor() {
               name="descripcionServicio"
               value={formData.descripcionServicio}
               onChange={handleChange}
-              required
             />
           </div>
 
@@ -87,7 +76,6 @@ function RegistrarProveedor() {
               name="direccion"
               value={formData.direccion}
               onChange={handleChange}
-              required
             />
           </div>
 
@@ -98,7 +86,6 @@ function RegistrarProveedor() {
               name="horarioAtencion"
               value={formData.horarioAtencion}
               onChange={handleChange}
-              required
             />
           </div>
         </div>
@@ -112,7 +99,6 @@ function RegistrarProveedor() {
               name="nombreProveedor"
               value={formData.nombreProveedor}
               onChange={handleChange}
-              required
             />
           </div>
 
@@ -123,7 +109,6 @@ function RegistrarProveedor() {
               name="celular"
               value={formData.celular}
               onChange={handleChange}
-              required
             />
           </div>
 
@@ -134,7 +119,26 @@ function RegistrarProveedor() {
               name="email"
               value={formData.email}
               onChange={handleChange}
-              required
+            />
+          </div>
+
+          <div className="form-group">
+            <label>Contraseña</label>
+            <input
+              type="password"
+              name="password"
+              value={formData.password}
+              onChange={handleChange}
+            />
+          </div>
+
+          <div className="form-group">
+            <label>Confirmar Contraseña</label>
+            <input
+              type="password"
+              name="confirmPassword"
+              value={formData.confirmPassword}
+              onChange={handleChange}
             />
           </div>
         </div>

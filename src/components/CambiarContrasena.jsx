@@ -1,75 +1,82 @@
 import React, { useState } from 'react';
-import { auth } from '../credenciales';
-import { updatePassword } from 'firebase/auth';
+import { useNavigate } from 'react-router-dom';
 import '../styles/CambiarContrasena.css';
 
 function CambiarContrasena() {
-  const [currentPassword, setCurrentPassword] = useState('');
-  const [newPassword, setNewPassword] = useState('');
-  const [confirmPassword, setConfirmPassword] = useState('');
-  const [message, setMessage] = useState('');
-  const [error, setError] = useState('');
+  const navigate = useNavigate();
+  const [passwordData, setPasswordData] = useState({
+    currentPassword: '',
+    newPassword: '',
+    confirmPassword: ''
+  });
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = (e) => {
     e.preventDefault();
-    setMessage('');
-    setError('');
+    console.log('Datos de cambio de contraseña:', passwordData);
+    // Aquí iría la lógica para cambiar la contraseña
+    alert('Contraseña actualizada correctamente');
+    navigate('/');
+  };
 
-    if (newPassword !== confirmPassword) {
-      setError('Las nuevas contraseñas no coinciden');
-      return;
-    }
-
-    try {
-      const user = auth.currentUser;
-      await updatePassword(user, newPassword);
-      setMessage('Contraseña actualizada con éxito');
-      setCurrentPassword('');
-      setNewPassword('');
-      setConfirmPassword('');
-    } catch (error) {
-      setError('Error al cambiar la contraseña: ' + error.message);
-    }
+  const handleChange = (e) => {
+    setPasswordData({
+      ...passwordData,
+      [e.target.name]: e.target.value
+    });
   };
 
   return (
     <div className="cambiar-contrasena">
-      <h2>Cambiar Contraseña</h2>
-      <form onSubmit={handleSubmit}>
-        <div className="form-group">
-          <label htmlFor="currentPassword">Contraseña Actual</label>
-          <input
-            type="password"
-            id="currentPassword"
-            value={currentPassword}
-            onChange={(e) => setCurrentPassword(e.target.value)}
-            required
-          />
-        </div>
-        <div className="form-group">
-          <label htmlFor="newPassword">Nueva Contraseña</label>
-          <input
-            type="password"
-            id="newPassword"
-            value={newPassword}
-            onChange={(e) => setNewPassword(e.target.value)}
-            required
-          />
-        </div>
-        <div className="form-group">
-          <label htmlFor="confirmPassword">Confirmar Nueva Contraseña</label>
-          <input
-            type="password"
-            id="confirmPassword"
-            value={confirmPassword}
-            onChange={(e) => setConfirmPassword(e.target.value)}
-            required
-          />
-        </div>
-        <button type="submit" className="btn-cambiar">Cambiar Contraseña</button>
-      </form>
-      {message && <p className="success-message">{message}</p>}
-      {error && <p className="error-message">{error}</p>}
+      <div className="form-container">
+        <h2>Actualizar Contraseña</h2>
+        <form onSubmit={handleSubmit}>
+          <div className="form-group">
+            <label htmlFor="currentPassword">Contraseña Actual</label>
+            <input
+              type="password"
+              id="currentPassword"
+              name="currentPassword"
+              value={passwordData.currentPassword}
+              onChange={handleChange}
+              required
+            />
+          </div>
+          <div className="form-group">
+            <label htmlFor="newPassword">Nueva Contraseña</label>
+            <input
+              type="password"
+              id="newPassword"
+              name="newPassword"
+              value={passwordData.newPassword}
+              onChange={handleChange}
+              required
+            />
+          </div>
+          <div className="form-group">
+            <label htmlFor="confirmPassword">Confirmar Contraseña</label>
+            <input
+              type="password"
+              id="confirmPassword"
+              name="confirmPassword"
+              value={passwordData.confirmPassword}
+              onChange={handleChange}
+              required
+            />
+          </div>
+          <div className="button-group">
+            <button type="submit" className="btn-enviar">
+              Enviar
+            </button>
+            <button 
+              type="button" 
+              className="btn-cancelar"
+              onClick={() => navigate('/')}
+            >
+              Cancelar
+            </button>
+          </div>
+        </form>
+      </div>
     </div>
   );
 }
