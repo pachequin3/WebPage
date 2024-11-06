@@ -1,0 +1,99 @@
+/* Estilos generales */
+body {
+  font-family: Arial, sans-serif;
+  background-color: #FFFFFF; /* Fondo general blanco */
+  color: #001634; /* Texto en color azul oscuro */
+  margin: 0;
+  padding: 0;
+}
+
+h1 {
+  text-align: center;
+  color: #001634; /* Color del encabezado */
+}
+
+/* Estilos del buscador */
+.input-busqueda {
+  display: block;
+  margin: 20px auto;
+  padding: 10px;
+  width: 40%;
+  border: 2px solid #001634; /* Borde azul oscuro */
+  border-radius: 5px;
+  font-size: 16px;
+  color: #001634; /* Texto azul oscuro */
+  background-color: #F4F4F4; /* Fondo gris claro */
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1); /* Sombra suave */
+}
+
+.input-busqueda::placeholder {
+  color: #7A869A; /* Color gris para el placeholder */
+}
+
+.input-busqueda:focus {
+  outline: none;
+  background-color: #FFF; /* Fondo blanco al enfocar */
+  border-color: #F4B000; /* Borde amarillo dorado al enfocar */
+  box-shadow: 0 0 8px rgba(244, 176, 0, 0.5); /* Resaltar sombra al enfocar */
+}
+
+/* Estilos de la tabla */
+table {
+  width: 80%;
+  margin: 20px auto;
+  border-collapse: collapse;
+  background-color: #F4F4F4; /* Fondo gris claro */
+  border-radius: 8px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+thead {
+  background-color: #001634; /* Fondo azul oscuro para el encabezado */
+  color: #FFFFFF; /* Texto blanco para el encabezado */
+}
+
+th,
+td {
+  padding: 12px 15px;
+  text-align: left;
+  border-bottom: 1px solid #ccc; /* Línea divisoria */
+}
+
+tbody tr:hover {
+  background-color: #F4B000; /* Fondo amarillo dorado al pasar el mouse */
+  color: #001634; /* Texto azul oscuro al pasar el mouse */
+}
+
+/* Estilos de los botones */
+button, 
+a.button {
+  background-color: #003366; /* Fondo azul medio */
+  color: #FFFFFF; /* Texto blanco en botones */
+  border: none;
+  border-radius: 5px;
+  padding: 8px 12px;
+  margin: 5px;
+  cursor: pointer;
+  text-decoration: none; /* Eliminar subrayado en los enlaces */
+  transition: background-color 0.3s ease;
+  display: inline-block; /* Mostrar los enlaces como botones */
+}
+
+button:hover, 
+a.button:hover {
+  background-color: #F4B000; /* Fondo amarillo dorado al pasar el mouse sobre los botones */
+  color: #001634; /* Texto azul oscuro al pasar el mouse sobre los botones */
+}
+
+/* Cambiar el color de fondo del botón al ser presionado */
+button:active,
+a.button:active {
+  background-color: #A0C4FF; /* Verde suave para el estado activo */
+  color: #FFFFFF; /* Mantener texto blanco */
+}
+
+button:focus,
+a.button:focus {
+  outline: none; /* Sin borde de enfoque */
+}
