@@ -18,7 +18,7 @@
     margin-bottom: 20px;
 }
 .cajatexto{
-    background-color: #cccccc40;
+    background-color: #cccccc55;
     border-color: slategray;
     border-radius: 30px;
     width: 100%;
@@ -45,6 +45,9 @@
     color: slategray;
     font-family: Arial, Helvetica, sans-serif;
     margin-top: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
 
 }
 .btnswich{
@@ -68,3 +71,20 @@
     justify-content: center;
     margin-bottom: 20px;
 }
+.btn-back {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    background-color: transparent;
+    color: #007bff;
+    border: none;
+    font-size: 18px;
+    font-weight: bold;
+    cursor: pointer;
+    text-decoration: none;
+  }
+  
+  .btn-back:hover {
+    color: #0056b3;
+  }
+  

@@ -15,6 +15,8 @@ import ProveedoresList from './pages/ProveedoresList';
 import RegistrarProveedor from './pages/RegistrarProveedor';
 import EditarProveedor from './pages/EditarProveedor';
 import CambiarContrasena from './components/CambiarContrasena';
+import ServiciosAdmin from './ModuloContratacionServicios/ServiciosAdmin';
+import AdminView from './ModuloContratacionServicios/AdminView';
 
 
 function App() {
@@ -29,13 +31,12 @@ function App() {
       <Route path='/Servicios' element={<PageServices />} />
       <Route path='/Contactanos' element={<Contactanos />} />
       <Route path='/LoginAdmin/AppLogin' element={<AppLogin />} />
-      
-   
       <Route path="proveedores" element={<ProveedoresList />} />
       <Route path="editar-proveedor/:id" element={<EditarProveedor />} />
       <Route path="registrar-proveedor" element={<RegistrarProveedor />} />
-      <Route path="cambiar-contrasena" element={<CambiarContrasena />} />
-    
+      <Route path="contratacion_Servicios" element={<AdminView/>} />
+      <Route path="aceptacion_servicios" element={<ServiciosAdmin/>} />
+     
 
       
       </Routes>

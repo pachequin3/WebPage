@@ -1,14 +1,18 @@
 import React, { useState, useRef } from 'react';
 import ReCAPTCHA from "react-google-recaptcha";
+import { useNavigate } from 'react-router-dom'; // Importa useNavigate
 import Imagen from '../assets/imagenes/1.jpg';
-import ImagenProfile from '../assets/imagenes/2.jpg';
+import ImagenProfile from '../assets/images/logo3.jpg';
 import './LoginAdmin.css';
 import appFirebase from '../credenciales';
 import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, sendEmailVerification, signOut } from 'firebase/auth';
+import Header from '../Header';
 
 const auth = getAuth(appFirebase);
 
 const Login = () => {
+  
+  const navigate = useNavigate(); // Inicializa useNavigate
   const [captchaValido, cambiarCaptchaValido] = useState(false);
   const [registrando, setRegistrando] = useState(false);
   const [mensajeExito, setMensajeExito] = useState(''); // Estado para mostrar mensajes
@@ -82,6 +86,15 @@ const Login = () => {
       <div className="col-md-4">
         <div className="padre">
           <div className="card card-body shadow-lg">
+            
+            {/* Botón para regresar a la página principal, ubicado en la esquina superior izquierda */}
+            <button 
+              className='btn-back' 
+              onClick={() => navigate('/')}
+            >
+              ← Inicio
+            </button>
+
             <img src={ImagenProfile} alt="" className='estilo-profile'/>
             <form onSubmit={functAutenticacion}>
               <input type="text" placeholder='Ingresar Email' className='cajatexto' id='email'/>
@@ -102,6 +115,7 @@ const Login = () => {
             <h4 className='texto'>{registrando ? " Si ya tienes cuenta " : " No tienes cuenta "}
               <button className='btnswich' onClick={() => setRegistrando(!registrando)}>{registrando ? "Inicia Sesion" : "Registrate"}</button>
             </h4>
+
           </div>
         </div>
       </div>

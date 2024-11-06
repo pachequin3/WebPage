@@ -40,10 +40,21 @@ function Sidebar() {
             </NavLink>
           </li>
           <li>
+            <NavLink to="/contratacion_Servicios">
+              <FaCogs /> CONTRATACION DE SERVICIOS
+            </NavLink>
+          </li>
+          <li>
+            <NavLink to="/aceptacion_servicios">
+              <FaCogs /> ACEPTACION DE SERIVICOS
+            </NavLink>
+          </li>
+          <li>
             <NavLink to="/informes">
               <FaFileAlt /> INFORMES Y REPORTES
             </NavLink>
           </li>
+          
         </ul>
       </nav>
     </aside>

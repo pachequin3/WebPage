@@ -32,7 +32,7 @@ function RegistrarProveedor() {
 
   return (
     <div className="registrar-proveedor">
-      <Outlet/>
+      
       <h2>Registrar Nuevo Proveedor</h2>
       
       <form onSubmit={handleSubmit}>

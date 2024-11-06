@@ -12,7 +12,7 @@ export default function Home() {
         <div className='containerHomeMain'>
           
              <div className="overlay">
-        <h1 className="title">AutoAsiste Bolivia</h1>
+        <h1 className="title">MECASOFT</h1>
         <p className="subtitle">Ideamos, diseñamos y desarrollamos productos que generan valor colectivo.</p>
         <div className="buttons">
           <button className="btn services-btn">NUESTROS SERVICIOS</button>
