@@ -1,0 +1,142 @@
+
+:root {
+  --primary-color: #1D2A3A; /* Dark blue from logo */
+  --secondary-color: #FFD700; /* Yellow from logo */
+  --background-form-color: #ffffff;
+  --input-background-color: #f5f5f5;
+  --button-color: #FFD700; /* Yellow for buttons */
+  --button-hover-color: #FFC300;
+}
+
+/* Contenedor principal */
+.registrar-proveedor {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 2rem;
+  background-color: var(--background-form-color);
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: box-shadow 0.3s ease;
+}
+
+.registrar-proveedor:hover {
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+}
+
+h2 {
+  text-align: center;
+  color: var(--primary-color);
+  font-size: 2rem;
+  margin-bottom: 2rem;
+}
+
+/* Secciones del formulario */
+.form-section {
+  background-color: #ffffff;
+  padding: 1.5rem;
+  border-radius: 10px;
+  margin-bottom: 1.5rem;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+}
+
+.form-section h3 {
+  color: var(--primary-color);
+  font-size: 1.3rem;
+  font-weight: 600;
+  margin-bottom: 1.5rem;
+  border-bottom: 2px solid var(--button-color);
+}
+
+.form-group {
+  margin-bottom: 1.5rem;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 0.5rem;
+  font-weight: 500;
+  color: var(--primary-color);
+}
+
+.form-group input,
+.form-group select {
+  width: 100%;
+  padding: 0.75rem;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 1rem;
+  background-color: var(--input-background-color);
+  color: var(--primary-color);
+  transition: border-color 0.3s ease, background-color 0.3s ease;
+}
+
+.form-group input:focus,
+.form-group select:focus {
+  border-color: var(--button-color);
+  background-color: #e0e7ff;
+  outline: none;
+}
+
+/* Botón de registro */
+.btn-registrar {
+  background-color: var(--button-color);
+  color: var(--primary-color);
+  padding: 0.75rem;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  width: 100%;
+  font-size: 1.1rem;
+  font-weight: bold;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.btn-registrar:hover {
+  background-color: var(--button-hover-color);
+  transform: translateY(-2px);
+}
+
+/* Efectos de transición en el formulario */
+input,
+select {
+  transition: all 0.3s ease;
+}
+
+input:hover,
+select:hover {
+  border-color: var(--button-hover-color);
+}
+
+/* Responsividad */
+@media (max-width: 768px) {
+  .registrar-proveedor {
+    padding: 1.5rem;
+  }
+
+  h2 {
+    font-size: 1.6rem;
+  }
+
+  .form-section h3 {
+    font-size: 1.2rem;
+  }
+
+  .btn-registrar {
+    font-size: 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  h2 {
+    font-size: 1.4rem;
+  }
+
+  .form-section h3 {
+    font-size: 1rem;
+  }
+
+  .btn-registrar {
+    font-size: 0.9rem;
+  }
+}

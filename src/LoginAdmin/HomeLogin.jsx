@@ -5,6 +5,14 @@ import HeaderAdmin from './HeaderAdmin';
 import './HomeLogin.css';
 import Banner from './Banner';
 import Servicios from './Servicios';
+import Dashboardg from './Dashboardg';
+import Dashboard from '../pages/Dashboard';
+import ProveedoresList from '../pages/ProveedoresList';
+import EditarProveedor from '../pages/EditarProveedor';
+import CambiarContrasena from '../components/CambiarContrasena';
+import RegistrarProveedor from '../pages/RegistrarProveedor';
+import Sidebar from '../components/Sidebar';
+import Layout from '../components/Layout';
 
 const auth = getAuth(appFirebase); // Obtienes la instancia de autenticación
 
@@ -43,10 +51,9 @@ const Navbar = () => {
 const HomeLogin = () => {
   return (
     <div className='El_todo'>
-      <Navbar />
-      <HeaderAdmin />
-      <Banner />
-      <Servicios />
+      <Layout/>
+      
+
     </div>
   );
 }

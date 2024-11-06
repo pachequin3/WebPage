@@ -1,0 +1,145 @@
+/* EditarProveedor.css */
+
+.editar-proveedor {
+  font-family: Arial, sans-serif;
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+  background-color: #f9f9f9;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+}
+
+.editar-proveedor h2 {
+  font-size: 2rem;
+  color: #264653;
+  text-align: center;
+  margin-bottom: 15px;
+}
+
+.editar-proveedor p {
+  font-size: 0.9rem;
+  color: #6d6d6d;
+  text-align: center;
+  margin-bottom: 15px;
+}
+
+.form-section {
+  background-color: #ffffff;
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  padding: 20px;
+  margin-bottom: 25px;
+}
+
+.form-section h3 {
+  font-size: 1.2rem;
+  color: #264653;
+  margin-bottom: 15px;
+  border-bottom: 2px solid #e76f51;
+  padding-bottom: 8px;
+}
+
+.form-group {
+  margin-bottom: 15px;
+}
+
+.form-group label {
+  display: block;
+  font-weight: bold;
+  color: #1d2a3a;
+  margin-bottom: 5px;
+}
+
+.form-group input,
+.form-group select {
+  width: 100%;
+  padding: 10px;
+  font-size: 0.95rem;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  transition: border-color 0.3s ease;
+}
+
+.form-group input:focus,
+.form-group select:focus {
+  border-color: #e76f51;
+  outline: none;
+}
+
+.button-group {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+.btn-actualizar,
+.btn-cancelar {
+  flex: 1;
+  padding: 12px 0;
+  font-size: 1rem;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.btn-actualizar {
+  background-color: #2a9d8f;
+  color: #ffffff;
+}
+
+.btn-actualizar:hover {
+  background-color: #21867a;
+}
+
+.btn-cancelar {
+  background-color: #e76f51;
+  color: #ffffff;
+}
+
+.btn-cancelar:hover {
+  background-color: #d55b3e;
+}
+
+/* Responsividad */
+@media (max-width: 768px) {
+  .editar-proveedor {
+    padding: 15px;
+  }
+
+  .editar-proveedor h2 {
+    font-size: 1.6rem;
+  }
+
+  .form-section h3 {
+    font-size: 1rem;
+  }
+
+  .btn-actualizar,
+  .btn-cancelar {
+    padding: 10px;
+    font-size: 0.9rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .editar-proveedor h2 {
+    font-size: 1.4rem;
+  }
+
+  .form-section {
+    padding: 15px;
+  }
+
+  .button-group {
+    flex-direction: column;
+    gap: 5px;
+  }
+
+  .btn-actualizar,
+  .btn-cancelar {
+    padding: 10px;
+    font-size: 0.9rem;
+  }
+}

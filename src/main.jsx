@@ -6,9 +6,10 @@ import Home from './Home.jsx'
 import PageServices from './PageServices.jsx'
 import Contactanos from './Contactanos.jsx'
 import App from './App.jsx'
+import Dashboardg from './LoginAdmin/Dashboardg.jsx'
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
-    <App/>
+   <App/>
   </StrictMode>
 )

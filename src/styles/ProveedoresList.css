@@ -1,0 +1,158 @@
+/* ProveedoresList.css */
+
+.proveedores-list {
+  padding: 1rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.proveedores-list h2 {
+  color: #1D2A3A;
+  text-align: center;
+  margin-bottom: 1rem;
+  font-size: 1.8rem;
+}
+
+.header-actions {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1.5rem;
+}
+
+.btn-registrar {
+  background-color: #F4A261;
+  color: white;
+  padding: 0.5rem 1rem;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  text-decoration: none;
+  transition: background-color 0.3s ease;
+}
+
+.btn-registrar:hover {
+  background-color: #E76F51;
+}
+
+.search-bar {
+  margin-bottom: 1.5rem;
+  display: flex;
+  justify-content: center;
+}
+
+.search-bar input {
+  width: 100%;
+  max-width: 400px;
+  padding: 0.5rem;
+  border: 2px solid #264653;
+  background-color: #F1FAEE;
+  color: #1D2A3A;
+  border-radius: 4px;
+  font-size: 1rem;
+  transition: border-color 0.3s ease;
+}
+
+.search-bar input::placeholder {
+  color: #264653;
+  opacity: 0.7;
+}
+
+.search-bar input:focus {
+  border-color: #E9C46A;
+  outline: none;
+}
+
+.table-container {
+  overflow-x: auto;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  background-color: #ffffff;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  min-width: 600px;
+}
+
+th, td {
+  padding: 0.75rem;
+  text-align: left;
+  border-bottom: 1px solid #ddd;
+  font-size: 0.9rem;
+}
+
+th {
+  background-color: #264653;
+  color: #ffffff;
+  font-weight: bold;
+}
+
+td {
+  color: #1D2A3A;
+}
+
+tr:hover td {
+  background-color: #f1f1f1;
+}
+
+.btn-editar, .btn-eliminar {
+  padding: 0.3rem 0.6rem;
+  margin: 0 0.2rem;
+  border: none;
+  border-radius: 4px;
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.btn-editar {
+  background-color: #E9C46A;
+  color: #1D2A3A;
+}
+
+.btn-editar:hover {
+  background-color: #F4A261;
+}
+
+.btn-eliminar {
+  background-color: #E76F51;
+  color: white;
+}
+
+.btn-eliminar:hover {
+  background-color: #D62828;
+}
+
+/* Responsividad */
+@media (max-width: 768px) {
+  .table-container {
+    overflow-x: auto;
+  }
+
+  th, td {
+    padding: 0.5rem;
+    font-size: 0.85rem;
+  }
+
+  .btn-editar, .btn-eliminar {
+    padding: 0.25rem 0.5rem;
+    font-size: 0.8rem;
+  }
+
+  .btn-registrar {
+    padding: 0.4rem 0.8rem;
+    font-size: 0.9rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .proveedores-list h2 {
+    font-size: 1.5rem;
+  }
+
+  .search-bar input {
+    max-width: 100%;
+  }
+}

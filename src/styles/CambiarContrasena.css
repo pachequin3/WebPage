@@ -1,0 +1,120 @@
+/* CambiarContrasena.css */
+
+.cambiar-contrasena {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: calc(100vh - 80px);
+  padding: 2rem;
+  background-color: #f4f6f8;
+}
+
+.form-container {
+  background-color: #ffffff;
+  padding: 2rem;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  max-width: 500px;
+}
+
+.cambiar-contrasena h2 {
+  text-align: center;
+  color: #264653; /* Color inspirado en el logo */
+  margin-bottom: 1.5rem;
+  font-size: 1.8rem;
+  font-weight: 700;
+}
+
+.form-group {
+  margin-bottom: 1.5rem;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 0.5rem;
+  color: #264653; /* Color inspirado en el logo */
+  font-weight: 600;
+}
+
+.form-group input {
+  width: 100%;
+  padding: 0.75rem;
+  border: 1px solid #b0bec5;
+  border-radius: 6px;
+  font-size: 1rem;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.form-group input:focus {
+  outline: none;
+  border-color: #2a9d8f; /* Color de acento */
+  box-shadow: 0 0 0 3px rgba(42, 157, 143, 0.3); /* Sombra suave con color de acento */
+}
+
+.button-group {
+  display: flex;
+  gap: 1rem;
+  margin-top: 2rem;
+}
+
+.btn-enviar,
+.btn-cancelar {
+  flex: 1;
+  padding: 0.75rem;
+  border: none;
+  border-radius: 6px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.3s ease, box-shadow 0.3s ease;
+  font-size: 1rem;
+}
+
+.btn-enviar {
+  background-color: #2a9d8f; /* Color principal de AutoAsiste */
+  color: #ffffff;
+}
+
+.btn-enviar:hover {
+  background-color: #21867a;
+  box-shadow: 0 4px 8px rgba(42, 157, 143, 0.2);
+}
+
+.btn-cancelar {
+  background-color: #e76f51; /* Color secundario del logo */
+  color: #ffffff;
+}
+
+.btn-cancelar:hover {
+  background-color: #d55b3e;
+  box-shadow: 0 4px 8px rgba(231, 111, 81, 0.2);
+}
+
+/* Responsividad */
+@media (max-width: 768px) {
+  .form-container {
+    padding: 1.5rem;
+  }
+
+  .cambiar-contrasena h2 {
+    font-size: 1.6rem;
+  }
+  
+  .btn-enviar,
+  .btn-cancelar {
+    padding: 0.6rem;
+    font-size: 0.9rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .button-group {
+    flex-direction: column;
+  }
+
+  .btn-enviar,
+  .btn-cancelar {
+    font-size: 1rem;
+    padding: 0.8rem;
+  }
+}

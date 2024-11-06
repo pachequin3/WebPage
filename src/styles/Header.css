@@ -1,0 +1,128 @@
+/* Estilo principal del encabezado */
+.header {
+  background-color: #1D2A3A; /* Color de fondo oscuro */
+  padding: 1rem 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Logo */
+.logo {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #FFD700; /* Color amarillo dorado */
+}
+
+/* Información del administrador */
+.admin-info {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+/* Texto del administrador */
+.admin-info span {
+  font-weight: 500;
+  color: #FFFFFF;
+}
+
+/* Botón del usuario */
+.user-button {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+  padding: 0.5rem;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+/* Ícono del usuario */
+.user-icon {
+  width: 24px;
+  height: 24px;
+  color: #FFD700; /* Color amarillo */
+}
+
+/* Ícono del menú desplegable */
+.dropdown-icon {
+  width: 16px;
+  height: 16px;
+  color: #FFD700;
+  transition: transform 0.2s ease;
+}
+
+/* Rotación del ícono al abrir el menú */
+.dropdown-icon.rotate-180 {
+  transform: rotate(180deg);
+}
+
+/* Menú desplegable */
+.dropdown-menu {
+  position: absolute;
+  top: 100%;
+  right: 0;
+  margin-top: 0.5rem;
+  background-color: #ffffff;
+  border-radius: 0.375rem;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+  min-width: 200px;
+  z-index: 50;
+}
+
+/* Botones en el menú desplegable */
+.dropdown-menu button {
+  display: block;
+  width: 100%;
+  padding: 0.75rem 1rem;
+  text-align: left;
+  background: none;
+  border: none;
+  color: #333;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+/* Efecto hover en los botones del menú */
+.dropdown-menu button:hover {
+  background-color: #f3f4f6;
+}
+
+/* Separador entre botones en el menú */
+.dropdown-menu button:not(:last-child) {
+  border-bottom: 1px solid #e5e7eb;
+}
+
+/* Responsividad */
+@media (max-width: 768px) {
+  .header {
+    padding: 1rem;
+  }
+
+  .logo {
+    font-size: 1.2rem;
+  }
+
+  .admin-info span {
+    display: none; /* Oculta el texto del administrador en pantallas pequeñas */
+  }
+}
+
+@media (max-width: 480px) {
+  .header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .admin-info {
+    width: 100%;
+    justify-content: space-between;
+  }
+
+  .dropdown-menu {
+    min-width: 100%;
+  }
+}
