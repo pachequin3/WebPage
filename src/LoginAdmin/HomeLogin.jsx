@@ -45,7 +45,7 @@ const Navbar = () => {
 function HomeLogin() {
   return (
     <div className='El_todo'>
-      <Navbar/>
+      
       <Layout />
 
 

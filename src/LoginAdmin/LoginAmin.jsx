@@ -1,12 +1,13 @@
 import React, { useState, useRef } from 'react';
 import ReCAPTCHA from "react-google-recaptcha";
 import { useNavigate } from 'react-router-dom'; // Importa useNavigate
-import Imagen from '../assets/imagenes/1.jpg';
-import ImagenProfile from '../assets/images/logo3.jpg';
+import Imagen from '../assets/imagenes/logo.jpg';
+import ImagenProfile from '../assets/images/logo.png';
 import './LoginAdmin.css';
 import appFirebase from '../credenciales';
 import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, sendEmailVerification, signOut } from 'firebase/auth';
 import Header from '../Header';
+
 
 const auth = getAuth(appFirebase);
 
@@ -82,44 +83,54 @@ const Login = () => {
   };
 
   return (
-    <div className='Login-Admin-container'>  
-      <div className="col-md-4">
-        <div className="padre">
-          <div className="card card-body shadow-lg">
-            
-            {/* Botón para regresar a la página principal, ubicado en la esquina superior izquierda */}
+    
+    <div className='Login-Admin-container'>
+    <div className="col-md-4">
+      <div className="padre">
+        <div className="card card-body shadow-lg">
+          
+          {/* Botón para regresar a la página principal, alineado a la izquierda */}
+          <div className='btn-back-container'>
             <button 
               className='btn-back' 
               onClick={() => navigate('/')}
             >
               ← Inicio
             </button>
-
-            <img src={ImagenProfile} alt="" className='estilo-profile'/>
-            <form onSubmit={functAutenticacion}>
-              <input type="text" placeholder='Ingresar Email' className='cajatexto' id='email'/>
-              <input type="password" placeholder='Ingresar Contraseña' className='cajatexto' id='password'/>
-              <div className='recaptha'> 
-                <ReCAPTCHA
-                  ref={recaptha}
-                  sitekey="6LeLNVUqAAAAAMBwBqSou7UclqdGe925Pd5mW_91"
-                  onChange={onChange}
-                />
-              </div>
-              <button className='btnform'>{registrando ? "Registrate" : "Inicia Sesion"}</button>
-            </form>
-            
-            {mensajeExito && <p style={{ color: 'green' }}>{mensajeExito}</p>} {/* Mostrar mensaje de éxito */}
-            {error && <p style={{ color: 'red' }}>{error}</p>} {/* Mostrar mensaje de error */}
-
-            <h4 className='texto'>{registrando ? " Si ya tienes cuenta " : " No tienes cuenta "}
-              <button className='btnswich' onClick={() => setRegistrando(!registrando)}>{registrando ? "Inicia Sesion" : "Registrate"}</button>
-            </h4>
-
           </div>
+  
+          <img src={ImagenProfile} alt="Logo de perfil" className='estilo-profile' />
+          
+          {/* Mensaje de bienvenida */}
+          <h2 className='mensaje-bienvenida'>Hola, bienvenido</h2>
+          
+          <form onSubmit={functAutenticacion}>
+            <input type="text" placeholder='Ingresar Email' className='cajatexto' id='email' />
+            <input type="password" placeholder='Ingresar Contraseña' className='cajatexto' id='password' />
+            
+            {/* reCAPTCHA centrado */}
+            <div className='recaptcha-container'> 
+              <ReCAPTCHA
+                ref={recaptha}
+                sitekey="6LeLNVUqAAAAAMBwBqSou7UclqdGe925Pd5mW_91"
+                onChange={onChange}
+              />
+            </div>
+            
+            <button className='btnform'>{registrando ? "Regístrate" : "Inicia Sesión"}</button>
+          </form>
+  
+          {mensajeExito && <p style={{ color: 'green' }}>{mensajeExito}</p>}
+          {error && <p style={{ color: 'red' }}>{error}</p>}
+  
+          <h4 className='texto'>{registrando ? "Si ya tienes cuenta" : "No tienes cuenta"}
+            <button className='btnswich' onClick={() => setRegistrando(!registrando)}>{registrando ? "Inicia Sesión" : "Regístrate"}</button>
+          </h4>
         </div>
       </div>
     </div>
+  </div>
+  
   );
 }
 

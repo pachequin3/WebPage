@@ -2,6 +2,8 @@ import { useState } from 'react';
 import { NavLink } from 'react-router-dom';
 import { FaUsers, FaCogs, FaFileAlt, FaCaretDown } from 'react-icons/fa';
 import '../styles/Sidebar.css';
+import CerrarSesionButton from '../LoginAdmin/CerrarSesionButton ';
+
 
 function Sidebar() {
   const [isProveedoresOpen, setProveedoresOpen] = useState(false);
@@ -26,35 +28,35 @@ function Sidebar() {
             {isProveedoresOpen && (
               <ul className="submenu">
                 <li>
-                  <NavLink to="/proveedores">Inicio</NavLink>
+                  <NavLink to="/admin/proveedores">Inicio</NavLink> {/* Ajuste de ruta */}
                 </li>
                 <li>
-                  <NavLink to="/registrar-proveedor">Registrar Proveedor</NavLink>
+                  <NavLink to="/admin/registrar-proveedor">Registrar Proveedor</NavLink> {/* Ajuste de ruta */}
                 </li>
               </ul>
             )}
           </li>
           <li>
-            <NavLink to="/servicios">
+            <NavLink to="/admin/servicios">
               <FaCogs /> SERVICIOS
             </NavLink>
           </li>
           <li>
-            <NavLink to="/contratacion_Servicios">
-              <FaCogs /> CONTRATACION DE SERVICIOS
+            <NavLink to="/admin/contratacion_Servicios">
+              <FaCogs /> CONTRATACIÓN DE SERVICIOS
             </NavLink>
           </li>
           <li>
-            <NavLink to="/aceptacion_servicios">
-              <FaCogs /> ACEPTACION DE SERIVICOS
+            <NavLink to="/admin/aceptacion_servicios">
+              <FaCogs /> ACEPTACIÓN DE SERVICIOS
             </NavLink>
           </li>
           <li>
-            <NavLink to="/informes">
+            <NavLink to="/admin/informes">
               <FaFileAlt /> INFORMES Y REPORTES
             </NavLink>
           </li>
-          
+          <CerrarSesionButton/>
         </ul>
       </nav>
     </aside>

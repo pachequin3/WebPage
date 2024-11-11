@@ -1,21 +1,17 @@
-import { Outlet } from 'react-router-dom';
-import Sidebar from './Sidebar';
-import Header from './Header';
+import React from 'react';
+import { Outlet } from 'react-router-dom'; // Para renderizar el componente dinámico
+import Sidebar from './Sidebar'; // Importa el Sidebar
+import Header from './Header'; // Importa el Header
 import '../styles/Layout.css';
-import Dashboard from '../pages/Dashboard';
 
 function Layout() {
   return (
     <div className="layout">
-      <Sidebar />
-      
+      <Sidebar /> {/* Sidebar de navegación */}
       <div className="main-content">
-        <Header />
-        <Dashboard/>
-        
+        <Header /> {/* Header o encabezado */}
         <main>
-        
-          <Outlet />
+          <Outlet /> {/* Renderizado del componente según la ruta */}
         </main>
         <footer>
           <p>© 2024 AutoAsiste Bolivia. Todos los derechos reservados.</p>

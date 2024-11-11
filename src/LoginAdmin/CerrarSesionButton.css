@@ -1,0 +1,20 @@
+/* CerrarSesionButton.css */
+.btn {
+    background-color: #d9534f; /* Color rojo */
+    border: none;
+    border-radius: 30px;
+    color: white;
+    padding: 12px 25px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s, box-shadow 0.3s;
+    position: absolute;
+    bottom: 20px; /* Coloca el botón en la parte inferior */
+    left: 20px;  /* Ubícalo a la izquierda */
+    transform: translateX(0); /* Alineación de izquierda */
+}
+
+.btn:hover {
+    background-color: #c9302c; /* Rojo más oscuro al hacer hover */
+    box-shadow: 0 4px 10px rgba(217, 83, 47, 0.3);
+}
