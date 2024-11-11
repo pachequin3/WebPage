@@ -1,0 +1,46 @@
+:root {
+    --gold-color: #FFD700;
+    --primary-color: #1B2333;
+    --secondary-color: #2A3447;
+    --gray-light: #f7fafc;
+    --gray-dark: #718096;
+  }
+  
+  /* Texto y Colores */
+  .text-primary {
+    color: var(--primary-color);
+  }
+  
+  .text-secondary {
+    color: var(--secondary-color);
+  }
+  
+  .text-gray-dark {
+    color: var(--gray-dark);
+  }
+  
+  .text-gold {
+    color: var(--gold-color);
+  }
+  
+  /* Botones */
+  .bg-primary {
+    background-color: var(--primary-color);
+  }
+  
+  .bg-secondary {
+    background-color: var(--secondary-color);
+  }
+  
+  .bg-gray-light {
+    background-color: var(--gray-light);
+  }
+  
+  .border-gold {
+    border-color: var(--gold-color);
+  }
+  
+  .hover\\:bg-secondary:hover {
+    background-color: var(--secondary-color);
+  }
+  

@@ -16,25 +16,11 @@ function Sidebar() {
       <nav>
         <ul>
           <li className="menu-item">
-            <div 
-              className="menu-header"
-              onClick={() => setProveedoresOpen(!isProveedoresOpen)}
-            >
-              <div className="menu-title">
-                <FaUsers /> PROVEEDORES
-              </div>
-              <FaCaretDown className={`caret ${isProveedoresOpen ? 'open' : ''}`} />
-            </div>
-            {isProveedoresOpen && (
-              <ul className="submenu">
-                <li>
-                  <NavLink to="/admin/proveedores">Inicio</NavLink> {/* Ajuste de ruta */}
-                </li>
-                <li>
-                  <NavLink to="/admin/registrar-proveedor">Registrar Proveedor</NavLink> {/* Ajuste de ruta */}
-                </li>
-              </ul>
-            )}
+          <NavLink to="proveedores" className="menu-header">
+      <div className="menu-title">
+        <FaUsers /> PROVEEDORES
+      </div>
+    </NavLink>
           </li>
           <li>
             <NavLink to="/admin/servicios">

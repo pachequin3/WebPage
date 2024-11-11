@@ -1,14 +1,14 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate, useLocation, useParams } from 'react-router-dom';
 import '../styles/EditarProveedor.css';
-import Dashboard from './Dashboard';
+import { db } from '../services/proveedorService';
+import { doc, updateDoc } from 'firebase/firestore';
 
 function EditarProveedor() {
-  
   const navigate = useNavigate();
   const location = useLocation();
-  const { id } = useParams();
-  const proveedorData = location.state?.proveedor;
+  const { id } = useParams();  // Obtenemos el ID desde la URL
+  const proveedorData = location.state?.proveedor;  // Datos pasados desde la página anterior
 
   const [formData, setFormData] = useState({
     nombreEmpresa: '',
@@ -23,20 +23,29 @@ function EditarProveedor() {
 
   useEffect(() => {
     if (proveedorData) {
-      setFormData(proveedorData);
+      setFormData(proveedorData);  // Si existen datos, los cargamos en el formulario
     } else {
-      // Si no hay datos, redirigir a la lista
+      // Si no hay datos, redirigir a la lista de proveedores
       navigate('/');
     }
   }, [proveedorData, navigate]);
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log('Datos actualizados:', formData);
-    // Aquí iría la lógica para actualizar los datos del proveedor
-    // Por ahora solo simulamos la actualización
-    alert('Proveedor actualizado correctamente');
-    navigate('/');
+    try {
+      // Referencia al proveedor en Firestore
+      const proveedorRef = doc(db, 'proveedores', id);
+      
+      // Actualizamos el documento en Firestore
+      await updateDoc(proveedorRef, formData);
+
+      // Mensaje de éxito
+      alert('Proveedor actualizado correctamente');
+      navigate('/');  // Redirigimos a la lista de proveedores
+    } catch (error) {
+      console.error('Error al actualizar proveedor:', error);
+      alert('Hubo un error al actualizar el proveedor');
+    }
   };
 
   const handleChange = (e) => {
@@ -158,7 +167,7 @@ function EditarProveedor() {
           <button 
             type="button" 
             className="btn-cancelar"
-            onClick={() => navigate('/')}
+            onClick={() => navigate('/admin/proveedores')}
           >
             Cancelar
           </button>

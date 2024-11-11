@@ -5,6 +5,35 @@
   width: 100%;
   background-color: #f5f5f5;
 }
+.search-bar {
+  flex: 1;
+  display: flex;
+  justify-content: center; /* Centra el input dentro del contenedor */
+  margin-right: 1rem; /* Espacio entre el input y el botón de agregar */
+}
+
+.search-bar input {
+  width: 100%;
+  max-width: 800px;
+  padding: 0.5rem;
+  border: 2px solid #264653;
+  background-color: #F1FAEE;
+  color: #1D2A3A;
+  border-radius: 4px;
+  font-size: 1rem;
+  transition: border-color 0.3s ease;
+}
+
+.search-bar input::placeholder {
+  color: #264653;
+  opacity: 0.7;
+}
+
+.search-bar input:focus {
+  border-color: #E9C46A;
+  outline: none;
+}
+
 
 /* Contenido principal (incluye Header, Main y Footer) */
 .main-content {

@@ -14,6 +14,9 @@ import RegistrarProveedor from './pages/RegistrarProveedor';
 import EditarProveedor from './pages/EditarProveedor';
 import ServiciosAdmin from './ModuloContratacionServicios/ServiciosAdmin';
 import AdminView from './ModuloContratacionServicios/AdminView';
+import { ReportsModule } from './Reportes/ReportsModule';
+import { MetricsSection } from './Reportes/MetricsSection';
+import { ReportFilters } from './Reportes/ReportFilters';
 
 function App() {
   return (
@@ -26,15 +29,23 @@ function App() {
         <Route path="/Servicios" element={<PageServices />} />
         <Route path="/Contactanos" element={<Contactanos />} />
         <Route path="/LoginAdmin/AppLogin" element={<AppLogin />} />
+        
 
         {/* Rutas protegidas en el Layout principal */}
         <Route path="/admin" element={<Layout />}>
           <Route index element={<Dashboard />} /> {/* Ruta principal Dashboard */}
           <Route path="proveedores" element={<ProveedoresList />} />
-          <Route path="registrar-proveedor" element={<RegistrarProveedor />} />
-          <Route path="editar-proveedor/:id" element={<EditarProveedor />} />
+    
+          <Route path="/admin/proveedores/editar-proveedor/:id" element={<EditarProveedor />} />
           <Route path="contratacion_Servicios" element={<AdminView />} />
           <Route path="aceptacion_servicios" element={<ServiciosAdmin />} />
+          <Route path="proveedores" element={<ProveedoresList />} />
+          <Route path="/admin/informes" element={<ReportsModule />} />
+          <Route path="MetricsSection" element={<MetricsSection />} />
+          <Route path="ReportFilters" element={<ReportFilters />} />
+          <Route path="/admin/proveedores/registrar-proveedor" element={<RegistrarProveedor />} />
+          
+          
         </Route>
       </Routes>
     </Router>

@@ -1,10 +1,14 @@
 import React, { useState } from 'react';
 import '../styles/RegistrarProveedor.css';
-import Dashboard from './Dashboard';
-import { Outlet } from 'react-router-dom';
+import { db } from '../services/proveedorService'; // Asegúrate de que este archivo tenga la configuración correcta
+import { collection, addDoc } from 'firebase/firestore';
+import { useNavigate, useLocation } from 'react-router-dom';
 
 function RegistrarProveedor() {
-  
+  const navigate = useNavigate();
+  const location = useLocation();
+  const proveedorData = location.state?.proveedor;  // Datos pasados desde la página anterior
+
   const [formData, setFormData] = useState({
     nombreEmpresa: '',
     tipoServicio: '',
@@ -18,9 +22,49 @@ function RegistrarProveedor() {
     confirmPassword: ''
   });
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log('Datos del formulario:', formData);
+
+    // Verifica si las contraseñas coinciden
+    if (formData.password !== formData.confirmPassword) {
+      alert("Las contraseñas no coinciden");
+      return;
+    }
+
+    try {
+      // Aquí se agrega el nuevo proveedor a Firestore
+      const proveedorRef = collection(db, 'proveedores');
+      await addDoc(proveedorRef, {
+        nombreEmpresa: formData.nombreEmpresa,
+        tipoServicio: formData.tipoServicio,
+        descripcionServicio: formData.descripcionServicio,
+        direccion: formData.direccion,
+        horarioAtencion: formData.horarioAtencion,
+        nombreProveedor: formData.nombreProveedor,
+        celular: formData.celular,
+        email: formData.email,
+        password: formData.password, // Es importante encriptar la contraseña antes de almacenarla en producción
+      });
+
+      // Resetea el formulario después de registrar el proveedor
+      setFormData({
+        nombreEmpresa: '',
+        tipoServicio: '',
+        descripcionServicio: '',
+        direccion: '',
+        horarioAtencion: '',
+        nombreProveedor: '',
+        celular: '',
+        email: '',
+        password: '',
+        confirmPassword: ''
+      });
+
+      alert('Proveedor registrado con éxito');
+    } catch (error) {
+      console.error('Error al registrar proveedor:', error);
+      alert('Error al registrar proveedor, por favor intente nuevamente');
+    }
   };
 
   const handleChange = (e) => {
@@ -32,7 +76,6 @@ function RegistrarProveedor() {
 
   return (
     <div className="registrar-proveedor">
-      
       <h2>Registrar Nuevo Proveedor</h2>
       
       <form onSubmit={handleSubmit}>
@@ -150,6 +193,13 @@ function RegistrarProveedor() {
         <button type="submit" className="btn-registrar">
           Registrar Proveedor
         </button>
+        <button 
+            type="button" 
+            className="btn-cancelar"
+            onClick={() => navigate('/admin/proveedores')}  // Redirige a la página de lista de proveedores
+          >
+            Cancelar
+          </button>
       </form>
     </div>
   );
