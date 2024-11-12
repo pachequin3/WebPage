@@ -47,6 +47,7 @@ function HomeLogin() {
     <div className='El_todo'>
       
       <Layout />
+      <Navbar/>
 
 
     </div>

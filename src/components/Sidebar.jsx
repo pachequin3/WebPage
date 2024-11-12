@@ -3,12 +3,13 @@ import { NavLink } from 'react-router-dom';
 import { FaUsers, FaCogs, FaFileAlt, FaCaretDown } from 'react-icons/fa';
 import '../styles/Sidebar.css';
 import CerrarSesionButton from '../LoginAdmin/CerrarSesionButton ';
-
+import { getAuth } from 'firebase/auth';
 
 function Sidebar() {
   const [isProveedoresOpen, setProveedoresOpen] = useState(false);
-
+  const auth = getAuth();
   return (
+    
     <aside className="sidebar">
       <div className="logo">
         <h1>Navegación Principal</h1>
@@ -42,7 +43,7 @@ function Sidebar() {
               <FaFileAlt /> INFORMES Y REPORTES
             </NavLink>
           </li>
-          <CerrarSesionButton/>
+          
         </ul>
       </nav>
     </aside>
