@@ -17,6 +17,7 @@ import AdminView from './ModuloContratacionServicios/AdminView';
 import { ReportsModule } from './Reportes/ReportsModule';
 import { MetricsSection } from './Reportes/MetricsSection';
 import { ReportFilters } from './Reportes/ReportFilters';
+import Services from './Services';
 
 function App() {
   return (
@@ -44,7 +45,7 @@ function App() {
           <Route path="MetricsSection" element={<MetricsSection />} />
           <Route path="ReportFilters" element={<ReportFilters />} />
           <Route path="/admin/proveedores/registrar-proveedor" element={<RegistrarProveedor />} />
-          
+          <Route path="/admin/servicios" element={<Services/>} />
           
         </Route>
       </Routes>

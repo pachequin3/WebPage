@@ -25,7 +25,7 @@ function Contactanos() {
         <div className="iframe-container">
           <iframe
             title="Google Map"
-            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2886.6553182959336!2d-79.38534968467091!3d43.65348107912162!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x882b34d55d364145%3A0x4c1c74a7a44eebf8!2sToronto%20City%20Hall!5e0!3m2!1sen!2sca!4v1609459250135!5m2!1sen!2sca"
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2230.85165794732!2d-68.07846030413181!3d-16.542614485302348!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x915f21131fdcbe63%3A0x7efd00803d883f20!2sEdif.%20Monroy%20y%20V%C3%A9lez!5e0!3m2!1ses-419!2sbo!4v1731470270841!5m2!1ses-419!2sbo"
             allowFullScreen=""
             loading="lazy"
             referrerPolicy="no-referrer-when-downgrade"
@@ -39,4 +39,4 @@ function Contactanos() {
     );
 }
 
-export default Contactanos;
+export default Contactanos;

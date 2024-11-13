@@ -15,8 +15,8 @@ export default function Home() {
         <h1 className="title">MECASOFT</h1>
         <p className="subtitle">Ideamos, diseñamos y desarrollamos productos que generan valor colectivo.</p>
         <div className="buttons">
-          <button className="btn services-btn">NUESTROS SERVICIOS</button>
-          <button className="btn contact-btn">CONTACTENOS</button>
+          {/* <button className="btn services-btn">NUESTROS SERVICIOS</button>
+          <button className="btn contact-btn">CONTACTENOS</button> */}
         </div>
       </div>
 
