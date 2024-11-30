@@ -1,61 +1,40 @@
-import React, { useState, useRef, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import '../styles/Header.css';
 
 function Header() {
-  const [isOpen, setIsOpen] = useState(false);
-  const dropdownRef = useRef(null);
+  const [role, setRole] = useState(''); // Estado para almacenar el rol del usuario
   const navigate = useNavigate();
 
   useEffect(() => {
-    const handleClickOutside = (event) => {
-      if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
-        setIsOpen(false);
-      }
-    };
-
-    document.addEventListener('mousedown', handleClickOutside);
-    return () => document.removeEventListener('mousedown', handleClickOutside);
+    // Recuperar el rol del usuario desde localStorage o sessionStorage
+    const storedRole = localStorage.getItem('role') || 'Administrador'; // Rol por defecto: Administrador
+    setRole(storedRole);
   }, []);
 
-  const handleCambiarContrasena = () => {
-    setIsOpen(false);
-    navigate('/cambiar-contrasena');
-  };
-
-  const handleCerrarSesion = () => {
-    setIsOpen(false);
-    // Aquí iría la lógica para cerrar sesión
-    console.log('Cerrar sesión');
+  const handleLogout = () => {
+    // Lógica para cerrar sesión
+    localStorage.clear(); // Limpia cualquier dato en localStorage
+    sessionStorage.clear(); // Limpia cualquier dato en sessionStorage
+    console.log('Cerrando sesión...');
+    navigate('/LoginAdmin'); // Redirige al login
   };
 
   return (
     <header className="header">
       <div className="logo">AutoAsiste Bolivia</div>
-      <div className="admin-info" ref={dropdownRef}>
-        <span>ADMINISTRADOR</span>
+      <div className="admin-info">
+        {/* Mostrar el rol dinámicamente */}
+        <span>{role}</span>
         <button 
           className="user-button"
-          onClick={() => setIsOpen(!isOpen)}
+          onClick={handleLogout} // Al hacer clic, cierra sesión y redirige
         >
           <svg className="user-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2" />
             <circle cx="12" cy="7" r="4" />
           </svg>
-          <svg className={`dropdown-icon ${isOpen ? 'rotate-180' : ''}`} viewBox="0 0 24 24" fill="none" stroke="currentColor">
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
-          </svg>
         </button>
-        {isOpen && (
-          <div className="dropdown-menu">
-            <button onClick={handleCambiarContrasena}>
-              Cambiar Contraseña
-            </button>
-            <button onClick={handleCerrarSesion}>
-              Cerrar Sesión
-            </button>
-          </div>
-        )}
       </div>
     </header>
   );

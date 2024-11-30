@@ -175,3 +175,12 @@ tr:hover td {
     max-width: 100%;
   }
 }
+.btn-baja {
+  background-color: red;
+  color: white;
+}
+
+.btn-activo {
+  background-color: green;
+  color: white;
+}

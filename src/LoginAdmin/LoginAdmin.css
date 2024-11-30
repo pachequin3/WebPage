@@ -1,9 +1,9 @@
 .Login-Admin-container {
-    display: flex;
+    
     justify-content: center;
     align-items: center;
-    width: 100%;
-    height: 100vh; /* Ocupar toda la altura de la pantalla */
+   
+   
     background: linear-gradient(135deg, #1a1a2e, #0D6EFD); /* Fondo degradado */
 }
 body {
@@ -13,15 +13,17 @@ body {
 .texto {
     font-family: 'Roboto', sans-serif; /* Aplica la fuente a tus elementos */
 }
-.padre {
+.col-md-4{
     display: flex;
-    justify-content: center;
+    justify-content: right;
+    width: 65%;
+   
 }
-
 .card {
     border-radius: 15px;
     border: none;
     background-color: #ffffff;
+    
     box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2); /* Sombra para resaltar la tarjeta */
     padding: 30px;
 }

@@ -7,8 +7,8 @@ import { doc, updateDoc } from 'firebase/firestore';
 function EditarProveedor() {
   const navigate = useNavigate();
   const location = useLocation();
-  const { id } = useParams();  // Obtenemos el ID desde la URL
-  const proveedorData = location.state?.proveedor;  // Datos pasados desde la página anterior
+  const { id } = useParams(); // Obtenemos el ID desde la URL
+  const proveedorData = location.state?.proveedor; // Datos pasados desde la página anterior
 
   const [formData, setFormData] = useState({
     nombreEmpresa: '',
@@ -18,40 +18,49 @@ function EditarProveedor() {
     horarioAtencion: '',
     nombreProveedor: '',
     celular: '',
-    email: ''
+    email: '',
+    password: '',
+    confirmPassword: '', // Campo para confirmar contraseña
+    estado: 'activo', // Estado por defecto
+    rol: 'Proveedores', // Rol fijo
   });
 
   useEffect(() => {
     if (proveedorData) {
-      setFormData(proveedorData);  // Si existen datos, los cargamos en el formulario
+      setFormData(proveedorData); // Si existen datos, los cargamos en el formulario
     } else {
-      // Si no hay datos, redirigir a la lista de proveedores
-      navigate('/');
+      navigate('/admin/proveedores'); // Si no hay datos, redirigir a la lista de proveedores
     }
   }, [proveedorData, navigate]);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+
+    // Validar que las contraseñas coincidan
+    if (formData.password !== formData.confirmPassword) {
+      alert('Las contraseñas no coinciden. Por favor, verifica.');
+      return;
+    }
+
     try {
-      // Referencia al proveedor en Firestore
       const proveedorRef = doc(db, 'proveedores', id);
-      
-      // Actualizamos el documento en Firestore
+
+      // Actualizar el documento en Firestore con los datos editados
       await updateDoc(proveedorRef, formData);
 
       // Mensaje de éxito
-      alert('Proveedor actualizado correctamente');
-      navigate('/');  // Redirigimos a la lista de proveedores
+      alert('Proveedor actualizado correctamente.');
+      navigate('/admin/proveedores'); // Redirigir a la lista de proveedores
     } catch (error) {
       console.error('Error al actualizar proveedor:', error);
-      alert('Hubo un error al actualizar el proveedor');
+      alert('Hubo un error al actualizar el proveedor.');
     }
   };
 
   const handleChange = (e) => {
     setFormData({
       ...formData,
-      [e.target.name]: e.target.value
+      [e.target.name]: e.target.value,
     });
   };
 
@@ -59,7 +68,7 @@ function EditarProveedor() {
     <div className="editar-proveedor">
       <h2>Editar Proveedor</h2>
       <p>ID del Proveedor: {id}</p>
-      
+
       <form onSubmit={handleSubmit}>
         <div className="form-section">
           <h3>Información General</h3>
@@ -73,7 +82,7 @@ function EditarProveedor() {
               onChange={handleChange}
             />
           </div>
-          
+
           <div className="form-group">
             <label htmlFor="tipoServicio">Tipo de Servicio</label>
             <select
@@ -158,14 +167,36 @@ function EditarProveedor() {
               onChange={handleChange}
             />
           </div>
+
+          <div className="form-group">
+            <label htmlFor="password">Contraseña</label>
+            <input
+              type="password"
+              id="password"
+              name="password"
+              value={formData.password}
+              onChange={handleChange}
+            />
+          </div>
+
+          <div className="form-group">
+            <label htmlFor="confirmPassword">Confirmar Contraseña</label>
+            <input
+              type="password"
+              id="confirmPassword"
+              name="confirmPassword"
+              value={formData.confirmPassword}
+              onChange={handleChange}
+            />
+          </div>
         </div>
 
         <div className="button-group">
           <button type="submit" className="btn-actualizar">
-            Actualizar
+            Guardar Cambios
           </button>
-          <button 
-            type="button" 
+          <button
+            type="button"
             className="btn-cancelar"
             onClick={() => navigate('/admin/proveedores')}
           >

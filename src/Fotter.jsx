@@ -47,5 +47,5 @@ export default function Fotter() {
             </div>
           </div>
         </footer>
-      );
-    }
+     );
+ }

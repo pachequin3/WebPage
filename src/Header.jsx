@@ -7,7 +7,7 @@ function Header() {
   return (
     <div className='headerContenedor'>
       <div className='logoHeader'>
-        <img src="/src/assets/images/logo3.jpg" alt="Logo de la empresa" />
+        <img src="/src/assets/images/logofih.jpg" alt="Logo de la empresa" />
       </div>
 
        <div className='TextoHeader'>
@@ -15,7 +15,7 @@ function Header() {
         <div className='letra2'><Link to='/Nosotros'><h1>Nosotros</h1></Link></div>
         <div className='letra3'><Link to='/Servicios'><h1>Servicios</h1></Link></div>
         <div className='letra4'><Link to='/Contactanos'><h1>Contáctanos</h1></Link></div>
-        <div className='letra4'><Link to='/LoginAdmin/AppLogin'><h1>Login</h1></Link></div>
+        <div className='letra4'><Link to='/LoginAdmin'><h1>Login</h1></Link></div>
       </div>
     
        <div className="header__social">

@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import appFirebase from '../credenciales'
 import {getAuth,onAuthStateChanged} from 'firebase/auth'
 const auth=getAuth(appFirebase)
-import Login from './LoginAmin'
+import Login from './Login'
 import HomeLogin from './HomeLogin'
 const AppLogin = () => {
     const[usuario,setUsuario]=useState(null)
