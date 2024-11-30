@@ -1,120 +1,241 @@
-.page-services {
-    background-color: #ffffff;
-    color: white;
-    padding: 20px;
-    min-height: 100vh;
-  }
-  
-  .page-title {
-    text-align: center;
-    font-size: 2em;
-    margin-bottom: 20px;
-  }
-  
-  .navigation-buttons {
-    display: flex;
-    justify-content: center;
-    gap: 10px;
-    margin-bottom: 20px;
-  }
-  
-  .service-list {
-    text-align: center;
-  }
-  
-  .service-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-    gap: 20px;
-  }
-  
-  .service-card {
-    background-color: #fff;
-    color: #28354c;
-    padding: 15px;
-    border-radius: 8px;
-    text-align: left;
-    position: relative;
-    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
-    transition: transform 0.3s ease;
-  }
-  
-  .service-card:hover {
-    transform: translateY(-5px);
-  }
-  
-  .animated-card {
-    opacity: 0;
-    animation: fadeIn 0.5s forwards;
-  }
-  
-  @keyframes fadeIn {
-    from { opacity: 0; }
-    to { opacity: 1; }
-  }
-  
-  .service-image {
-    max-width: 100%;
-    border-radius: 5px;
-    margin-top: 10px;
-  }
-  
-  .edit-button, .delete-button {
-    background-color: #f0ad4e;
-    color: #fff;
-    border: none;
-    padding: 8px 12px;
-    cursor: pointer;
-    margin-right: 5px;
-    border-radius: 5px;
-  }
-  
-  .delete-button {
-    background-color: #d9534f;
-  }
-  
-  .add-service-form {
-    max-width: 500px;
-    margin: 0 auto;
-    text-align: left;
-    background-color: #fff;
-    color: #28354c;
-    padding: 20px;
-    border-radius: 8px;
-  }
-  
-  .form-group {
-    margin-bottom: 15px;
-  }
-  
-  .form-group label {
-    display: block;
-    font-weight: bold;
-    margin-bottom: 5px;
-  }
-  
-  .form-group input {
-    width: 100%;
-    padding: 8px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-  }
-  
-  .save-button {
-    background-color: #f0ad4e;
-    color: #fff;
-    border: none;
-    padding: 10px 20px;
-    cursor: pointer;
-    border-radius: 5px;
-    margin-top: 15px;
-    display: block;
-    width: 100%;
-  }
-  
-  .success-message {
-    color: green;
-    text-align: center;
-    margin-top: 10px;
-  }
-  
+/* Estilo General */
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #f0f0f0;
+}
+
+/* Contenedor General */
+.contenedor-servicios {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+h1, h2 {
+  text-align: center;
+  color: #00008B;
+}
+
+p {
+  text-align: center;
+  color: #333;
+}
+
+/* Tarjetas Familiares */
+.tarjetas-servicios {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: center;
+}
+
+.tarjeta-servicio {
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  width: 250px;
+  text-align: center;
+  position: relative;
+  transition: transform 0.3s ease;
+}
+
+.tarjeta-servicio:hover {
+  transform: translateY(-5px);
+}
+
+.icono-servicio {
+  font-size: 3em; /* Tamaño grande para los íconos */
+  color: #00008B;
+  margin-bottom: 15px;
+}
+
+/* Indicadores de Estado */
+.estado-indicador {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  width: 15px;
+  height: 15px;
+  border-radius: 50%;
+}
+
+.estado-indicador.verde {
+  background-color: green;
+}
+
+.estado-indicador.rojo {
+  background-color: red;
+}
+
+/* Menú Opciones (tres puntos) */
+.menu-opciones {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  cursor: pointer;
+}
+
+.menu-icono {
+  font-size: 1.5em; /* Tamaño más grande para tres puntos */
+}
+
+.menu-secundario {
+  position: absolute;
+  top: 25px;
+  right: 10px;
+  background-color: #fff;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+  padding: 5px;
+  z-index: 10;
+}
+
+.menu-secundario button {
+  background: none;
+  border: none;
+  padding: 5px;
+  cursor: pointer;
+  text-align: left;
+}
+
+.menu-secundario button:hover {
+  background-color: #f0f0f0;
+}
+
+/* Botones Generales */
+button {
+  cursor: pointer;
+}
+
+.btn-solicitar, .btn-volver, .btn-agregar, .btn-guardar, .btn-cancelar {
+  background-color: #FFD700;
+  color: #00008B;
+  border: none;
+  padding: 10px 15px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.btn-solicitar:hover, .btn-volver:hover, .btn-agregar:hover, .btn-guardar:hover, .btn-cancelar:hover {
+  background-color: #FFC000;
+}
+
+.btn-eliminar {
+  background-color: #FF6347;
+  color: #fff;
+  border: none;
+  padding: 5px 10px;
+  border-radius: 5px;
+}
+
+.btn-eliminar:hover {
+  background-color: #FF4500;
+}
+
+/* Vista de Detalle */
+.vista-detalle {
+  margin-top: 20px;
+}
+
+.tarjetas-listar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: center;
+}
+
+.tarjeta-lista {
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  width: 350px; /* Más espacio para mostrar servicios */
+  text-align: center;
+  position: relative;
+  transition: transform 0.3s ease;
+}
+
+.tarjeta-lista:hover {
+  transform: translateY(-5px);
+}
+
+.imagen-lista {
+  width: 100%;
+  height: 150px;
+  object-fit: cover;
+  border-radius: 10px;
+}
+
+/* Formulario Registro */
+.formulario-registro {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  background-color: #fff;
+  border-radius: 10px;
+  padding: 20px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.formulario-registro input,
+.formulario-registro select {
+  padding: 10px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  width: 100%;
+}
+
+.formulario-registro button {
+  padding: 10px;
+  border-radius: 5px;
+  font-size: 14px;
+  transition: background-color 0.3s ease;
+}
+
+/* Factura */
+.factura {
+  background-color: #fff;
+  border-radius: 10px;
+  padding: 20px;
+  margin-top: 20px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.factura ul {
+  list-style: none;
+  padding: 0;
+}
+
+.factura li {
+  margin-bottom: 10px;
+}
+
+/* Botón Aceptar */
+.btn-aceptar {
+  background-color: #00008B;
+  color: #fff;
+  padding: 10px;
+  border: none;
+  border-radius: 5px;
+}
+
+.btn-aceptar:hover {
+  background-color: #000066;
+}
+
+/* Botón Cancelar */
+.btn-cancelar {
+  background-color: #FF6347;
+  color: #fff;
+}
+
+.btn-cancelar:hover {
+  background-color: #FF4500;
+}

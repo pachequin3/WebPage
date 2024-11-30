@@ -54,6 +54,7 @@ function Sidebar() {
         <ul>
           {userRole === 'Administrador' && (
             <>
+              {/* Menú para Administradores */}
               <li className="menu-item">
                 <NavLink to="/admin/proveedores" className="menu-header">
                   <div className="menu-title">
@@ -66,11 +67,6 @@ function Sidebar() {
                   <div className="menu-title">
                     <FaUsers /> USUARIOS
                   </div>
-                </NavLink>
-              </li>
-              <li>
-                <NavLink to="/admin/servicios">
-                  <FaCogs /> SERVICIOS
                 </NavLink>
               </li>
               <li>
@@ -93,6 +89,21 @@ function Sidebar() {
 
           {userRole === 'Proveedores' && (
             <>
+              {/* Menú para Proveedores */}
+              <li className="menu-item">
+                <NavLink to="/proveedor/usuarios" className="menu-header">
+                  <div className="menu-title">
+                    <FaUsers /> USUARIOS
+                  </div>
+                </NavLink>
+              </li>
+              <li className="menu-item">
+                <NavLink to="/proveedor/proveedores" className="menu-header">
+                  <div className="menu-title">
+                    <FaUsers /> PROVEEDORES
+                  </div>
+                </NavLink>
+              </li>
               <li className="menu-item">
                 <NavLink to="/proveedor/servicios" className="menu-header">
                   <div className="menu-title">

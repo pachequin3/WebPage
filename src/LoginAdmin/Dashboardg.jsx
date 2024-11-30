@@ -15,6 +15,7 @@ function Dashboardg() {
         <Route path="/" element={<Layout />}>
           <Route index element={<Dashboard />} />
           <Route path="proveedores" element={<ProveedoresList />} />
+          <Route path="usuarios" element={<ProveedoresList />} />
           <Route path="editar-proveedor/:id" element={<EditarProveedor />} />
           <Route path="registrar-proveedor" element={<RegistrarProveedor />} />
           <Route path="cambiar-contrasena" element={<CambiarContrasena />} />

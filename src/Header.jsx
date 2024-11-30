@@ -7,7 +7,7 @@ function Header() {
   return (
     <div className='headerContenedor'>
       <div className='logoHeader'>
-        <img src="/src/assets/images/logofih.jpg" alt="Logo de la empresa" />
+        <img src="/src/assets/images/logofi.jpg" alt="Logo de la empresa" />
       </div>
 
        <div className='TextoHeader'>
