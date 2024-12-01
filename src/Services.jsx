@@ -1,293 +1,224 @@
-import React, { useState } from "react";
-import { FaTools, FaCar, FaBolt, FaTruckPickup } from "react-icons/fa"; // Iconos
+import React, { useState, useEffect } from "react";
+import { FaCar } from "react-icons/fa"; // Iconos
+import { collection, addDoc, getDocs, updateDoc, doc } from "firebase/firestore";
+import { onAuthStateChanged } from "firebase/auth"; // Autenticación
+import { db, auth } from "./credenciales"; // Configuración de Firebase
 import "./Services.css";
 
 export default function Services() {
-  const [servicios, setServicios] = useState([
-    {
-      id: "llanteria",
-      titulo: "Servicios de Llantería",
-      descripcion: "Cambio de llantas, reparación de pinchazos, balanceo.",
-      icono: <FaTools />,
-      tipos: [],
-    },
-    {
-      id: "mecanico",
-      titulo: "Servicios de Mecánica",
-      descripcion: "Reparación de motor, cambio de aceite, revisiones.",
-      icono: <FaCar />,
-      tipos: [],
-    },
-    {
-      id: "electricista",
-      titulo: "Servicios Electricistas",
-      descripcion: "Reparación de sistemas eléctricos, cambio de baterías.",
-      icono: <FaBolt />,
-      tipos: [],
-    },
-    {
-      id: "grua",
-      titulo: "Servicios de Grúas",
-      descripcion: "Remolque a taller, asistencia en carretera.",
-      icono: <FaTruckPickup />,
-      tipos: [],
-    },
-  ]);
-
-  const [vistaActual, setVistaActual] = useState("principal");
-  const [servicioSeleccionado, setServicioSeleccionado] = useState(null);
-  const [menuAbierto, setMenuAbierto] = useState(null);
+  const [serviciosRegistrados, setServiciosRegistrados] = useState([]);
+  const [usuario, setUsuario] = useState(null); // Usuario autenticado
+  const [vistaActual, setVistaActual] = useState("principal"); // Vista actual
   const [nuevoServicio, setNuevoServicio] = useState({
-    negocio: "",
-    propietario: "",
-    imagen: null,
-    servicios: [],
-    estado: "Libre",
+    nombre: "",
+    descripcion: "",
+    precio: "",
+    tipoServicio: "mecanico", // Tipo de servicio predeterminado
   });
-  const [nuevoServicioTemp, setNuevoServicioTemp] = useState({ nombre: "", precio: "" });
+  const [editarServicio, setEditarServicio] = useState(null); // Servicio que se está editando
 
-  const seleccionarFamilia = (familia) => {
-    setServicioSeleccionado(familia);
-    setVistaActual("detalle");
-  };
+  useEffect(() => {
+    // Obtenemos el usuario autenticado
+    const unsubscribe = onAuthStateChanged(auth, (user) => {
+      if (user) {
+        setUsuario(user);
+        cargarServicios(user.email);
+      } else {
+        setUsuario(null);
+      }
+    });
+    return () => unsubscribe();
+  }, []);
 
-  const agregarServicioTemp = () => {
-    if (nuevoServicioTemp.nombre && nuevoServicioTemp.precio) {
-      setNuevoServicio({
-        ...nuevoServicio,
-        servicios: [...nuevoServicio.servicios, nuevoServicioTemp],
-      });
-      setNuevoServicioTemp({ nombre: "", precio: "" });
-    } else {
-      alert("Por favor completa el nombre y precio del servicio.");
+  const cargarServicios = async (email) => {
+    try {
+      const querySnapshot = await getDocs(collection(db, "Servicios"));
+      const servicios = querySnapshot.docs
+        .map((doc) => ({ id: doc.id, ...doc.data() }))
+        .filter((servicio) => servicio.email === email); // Filtrar servicios por el email del usuario
+      setServiciosRegistrados(servicios);
+    } catch (error) {
+      console.error("Error al cargar servicios:", error);
     }
   };
 
-  const guardarServicio = () => {
-    if (!nuevoServicio.negocio || !nuevoServicio.propietario) {
+  const agregarServicio = async () => {
+    if (!nuevoServicio.nombre || !nuevoServicio.descripcion || !nuevoServicio.precio) {
       alert("Por favor completa todos los campos.");
       return;
     }
 
-    const actualizado = { ...servicioSeleccionado };
-    actualizado.tipos.push(nuevoServicio);
+    const servicio = {
+      ...nuevoServicio,
+      email: usuario.email, // Asocia el servicio al email del usuario
+    };
 
-    setServicios((prev) =>
-      prev.map((servicio) =>
-        servicio.id === actualizado.id ? actualizado : servicio
-      )
-    );
-
-    alert("¡Servicio registrado exitosamente!");
-    setNuevoServicio({
-      negocio: "",
-      propietario: "",
-      imagen: null,
-      servicios: [],
-      estado: "Libre",
-    });
-    setVistaActual("detalle");
-  };
-
-  const editarServicio = (index) => {
-    const servicioActual = servicioSeleccionado.tipos[index];
-    const nuevoNegocio = prompt("Nuevo nombre del negocio:", servicioActual.negocio);
-    const nuevoPropietario = prompt("Nuevo propietario:", servicioActual.propietario);
-    const nuevoEstado = prompt("Nuevo estado (Libre / Ocupado):", servicioActual.estado);
-
-    if (nuevoNegocio && nuevoPropietario && nuevoEstado) {
-      const actualizado = { ...servicioSeleccionado };
-      actualizado.tipos[index] = {
-        ...actualizado.tipos[index],
-        negocio: nuevoNegocio,
-        propietario: nuevoPropietario,
-        estado: nuevoEstado,
-      };
-
-      setServicios((prev) =>
-        prev.map((servicio) =>
-          servicio.id === actualizado.id ? actualizado : servicio
-        )
-      );
-
-      alert("¡Servicio actualizado con éxito!");
-      setMenuAbierto(null);
+    try {
+      await addDoc(collection(db, "Servicios"), servicio);
+      alert("¡Servicio agregado exitosamente!");
+      cargarServicios(usuario.email);
+      setNuevoServicio({ nombre: "", descripcion: "", precio: "", tipoServicio: "mecanico" });
+      setVistaActual("gestionar");
+    } catch (error) {
+      console.error("Error al agregar servicio:", error);
     }
   };
 
-  const eliminarServicio = (index) => {
-    const actualizado = { ...servicioSeleccionado };
-    actualizado.tipos.splice(index, 1);
+  const guardarEdicion = async () => {
+    if (!editarServicio.nombre || !editarServicio.descripcion || !editarServicio.precio) {
+      alert("Por favor completa todos los campos.");
+      return;
+    }
 
-    setServicios((prev) =>
-      prev.map((servicio) =>
-        servicio.id === actualizado.id ? actualizado : servicio
-      )
-    );
-
-    setMenuAbierto(null);
+    try {
+      const servicioRef = doc(db, "Servicios", editarServicio.id);
+      await updateDoc(servicioRef, editarServicio);
+      alert("¡Servicio actualizado exitosamente!");
+      cargarServicios(usuario.email);
+      setEditarServicio(null);
+      setVistaActual("gestionar");
+    } catch (error) {
+      console.error("Error al actualizar servicio:", error);
+    }
   };
 
-  const eliminarFormulario = () => {
-    setNuevoServicio({
-      negocio: "",
-      propietario: "",
-      imagen: null,
-      servicios: [],
-      estado: "Libre",
-    });
-    setVistaActual("detalle");
+  const cancelarEdicion = () => {
+    setEditarServicio(null);
+    setVistaActual("gestionar");
   };
 
   return (
     <div className="contenedor-servicios">
-      <h1>Nuestros Servicios</h1>
-      <p>Asistencia vehicular especializada en llantería, mecánica, electricista y grúas.</p>
+      <h1>Servicios Disponibles</h1>
+      {usuario && (
+        <p>
+          Bienvenido, <b>{usuario.displayName || usuario.email}</b>. Solo puedes agregar servicios relacionados con tu especialidad:{" "}
+          <b>mecánico</b>.
+        </p>
+      )}
 
+      {/* Vista principal */}
       {vistaActual === "principal" && (
         <div className="tarjetas-servicios">
-          {servicios.map((servicio) => (
-            <div key={servicio.id} className="tarjeta-servicio">
-              <div className="icono-servicio">{servicio.icono}</div>
-              <h3>{servicio.titulo}</h3>
-              <p>{servicio.descripcion}</p>
-              <button
-                className="btn-solicitar"
-                onClick={() => seleccionarFamilia(servicio)}
-              >
-                Solicitar Servicio
-              </button>
+          <div className="tarjeta-servicio">
+            <div className="icono-servicio">
+              <FaCar />
             </div>
-          ))}
-        </div>
-      )}
-
-      {vistaActual === "detalle" && (
-        <div className="vista-detalle">
-          <h2>{servicioSeleccionado.titulo}</h2>
-          <button
-            className="btn-agregar"
-            onClick={() => setVistaActual("registro")}
-          >
-            Agregar Servicio
-          </button>
-          <div className="tarjetas-listar">
-            {servicioSeleccionado.tipos.map((tipo, index) => (
-              <div key={index} className="tarjeta-lista">
-                <div
-                  className={`estado-indicador ${
-                    tipo.estado === "Libre" ? "verde" : "rojo"
-                  }`}
-                ></div>
-                <div className="menu-opciones">
-                  <span
-                    className="menu-icono"
-                    onClick={() =>
-                      menuAbierto === index
-                        ? setMenuAbierto(null)
-                        : setMenuAbierto(index)
-                    }
-                  >
-                    ⋮
-                  </span>
-                  {menuAbierto === index && (
-                    <div className="menu-secundario">
-                      <button onClick={() => editarServicio(index)}>✏ Editar</button>
-                      <button onClick={() => eliminarServicio(index)}>🗑 Eliminar</button>
-                    </div>
-                  )}
-                </div>
-                <h3>{tipo.negocio}</h3>
-                {tipo.imagen && (
-                  <img src={tipo.imagen} alt={tipo.negocio} className="imagen-lista" />
-                )}
-                <p>Propietario: {tipo.propietario}</p>
-                <ul>
-                  {tipo.servicios.map((servicio, idx) => (
-                    <li key={idx}>
-                      {servicio.nombre} - ${servicio.precio}
-                    </li>
-                  ))}
-                </ul>
-                <p>Estado: {tipo.estado}</p>
-              </div>
-            ))}
+            <h3>Servicios de Mecánica</h3>
+            <p>Reparación de motor, cambio de aceite, revisiones.</p>
+            <button className="btn-solicitar" onClick={() => setVistaActual("registro")}>
+              Agregar Servicio
+            </button>
+            <button className="btn-gestionar" onClick={() => setVistaActual("gestionar")}>
+              Gestionar Mis Servicios
+            </button>
           </div>
-          <button
-            className="btn-volver"
-            onClick={() => setVistaActual("principal")}
-          >
-            Volver
-          </button>
         </div>
       )}
 
+      {/* Vista de registro de un nuevo servicio */}
       {vistaActual === "registro" && (
         <div className="formulario-registro">
           <h2>Registrar Servicio</h2>
           <input
             type="text"
-            placeholder="Nombre del negocio"
-            value={nuevoServicio.negocio}
-            onChange={(e) =>
-              setNuevoServicio({ ...nuevoServicio, negocio: e.target.value })
-            }
+            placeholder="Nombre del servicio"
+            value={nuevoServicio.nombre}
+            onChange={(e) => setNuevoServicio({ ...nuevoServicio, nombre: e.target.value })}
           />
+          <textarea
+            placeholder="Descripción del servicio"
+            value={nuevoServicio.descripcion}
+            onChange={(e) => setNuevoServicio({ ...nuevoServicio, descripcion: e.target.value })}
+          ></textarea>
           <input
-            type="text"
-            placeholder="Nombre del propietario"
-            value={nuevoServicio.propietario}
-            onChange={(e) =>
-              setNuevoServicio({
-                ...nuevoServicio,
-                propietario: e.target.value,
-              })
-            }
+            type="number"
+            placeholder="Precio del servicio"
+            value={nuevoServicio.precio}
+            onChange={(e) => setNuevoServicio({ ...nuevoServicio, precio: e.target.value })}
           />
-          <input
-            type="file"
-            accept="image/*"
-            onChange={(e) =>
-              setNuevoServicio({
-                ...nuevoServicio,
-                imagen: URL.createObjectURL(e.target.files[0]),
-              })
-            }
-          />
-          <div className="agregar-servicio">
-            <input
-              type="text"
-              placeholder="Nombre del servicio"
-              value={nuevoServicioTemp.nombre}
-              onChange={(e) =>
-                setNuevoServicioTemp({ ...nuevoServicioTemp, nombre: e.target.value })
-              }
-            />
-            <input
-              type="number"
-              placeholder="Precio"
-              value={nuevoServicioTemp.precio}
-              onChange={(e) =>
-                setNuevoServicioTemp({ ...nuevoServicioTemp, precio: e.target.value })
-              }
-            />
-            <button onClick={agregarServicioTemp}>Agregar</button>
-          </div>
-          <ul>
-            {nuevoServicio.servicios.map((servicio, index) => (
-              <li key={index}>
-                {servicio.nombre} - ${servicio.precio}
-              </li>
-            ))}
-          </ul>
-          <button className="btn-guardar" onClick={() => guardarServicio()}>
-            Agregar Servicio
+          <button className="btn-guardar" onClick={agregarServicio}>
+            Guardar
           </button>
-          <button className="btn-cancelar" onClick={() => eliminarFormulario()}>
-            Eliminar
+          <button className="btn-cancelar" onClick={() => setVistaActual("principal")}>
+            Cancelar
           </button>
         </div>
       )}
+
+      {/* Vista para gestionar los servicios */}
+      {vistaActual === "gestionar" && !editarServicio && (
+        <div className="vista-detalle">
+          <h2>Mis Servicios Registrados</h2>
+          <div className="tarjetas-listar">
+            {serviciosRegistrados.map((servicio) => (
+              <div className="tarjeta-lista" key={servicio.id}>
+                <h3>{servicio.nombre}</h3>
+                <p>
+                  <strong>Precio:</strong> ${servicio.precio}
+                </p>
+                <p>
+                  <strong>Descripción:</strong> {servicio.descripcion}
+                </p>
+                <p>
+                  <strong>Tipo de Servicio:</strong> {servicio.tipoServicio}
+                </p>
+                <button className="btn-editar" onClick={() => setEditarServicio(servicio)}>
+                  Editar
+                </button>
+              </div>
+            ))}
+          </div>
+          <button className="btn-volver" onClick={() => setVistaActual("principal")}>
+            Volver
+          </button>
+        </div>
+      )}
+
+{editarServicio && (
+  <div className="formulario-editar">
+    <h2>Editar Servicio</h2>
+    <div className="formulario-campos">
+      <label>
+        <strong>Nombre del Servicio:</strong>
+        <input
+          type="text"
+          placeholder="Nombre del servicio"
+          value={editarServicio.nombre}
+          onChange={(e) => setEditarServicio({ ...editarServicio, nombre: e.target.value })}
+        />
+      </label>
+      <label>
+        <strong>Descripción:</strong>
+        <textarea
+          placeholder="Descripción del servicio"
+          value={editarServicio.descripcion}
+          onChange={(e) =>
+            setEditarServicio({ ...editarServicio, descripcion: e.target.value })
+          }
+        ></textarea>
+      </label>
+      <label>
+        <strong>Precio:</strong>
+        <input
+          type="number"
+          placeholder="Precio del servicio"
+          value={editarServicio.precio}
+          onChange={(e) => setEditarServicio({ ...editarServicio, precio: e.target.value })}
+        />
+      </label>
+    </div>
+    <div className="formulario-botones">
+      <button className="btn-guardar" onClick={guardarEdicion}>
+        Guardar Cambios
+      </button>
+      <button className="btn-cancelar" onClick={cancelarEdicion}>
+        Cancelar
+      </button>
+    </div>
+  </div>
+)}
+
     </div>
   );
 }

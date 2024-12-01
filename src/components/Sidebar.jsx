@@ -16,17 +16,32 @@ function Sidebar() {
     const unsubscribe = onAuthStateChanged(auth, async (user) => {
       if (user) {
         try {
+          // Verificar en la colección de Administradores
           const adminQuery = query(
             collection(db, 'Administrador'),
             where('Email', '==', user.email)
           );
-
           const adminSnapshot = await getDocs(adminQuery);
+
           if (!adminSnapshot.empty) {
             const adminData = adminSnapshot.docs[0].data();
             setUserRole(adminData.rol);
+            setLoading(false);
+            return;
+          }
+
+          // Si no es administrador, verificar en la colección de Proveedores
+          const proveedorQuery = query(
+            collection(db, 'proveedores'),
+            where('email', '==', user.email)
+          );
+          const proveedorSnapshot = await getDocs(proveedorQuery);
+
+          if (!proveedorSnapshot.empty) {
+            const proveedorData = proveedorSnapshot.docs[0].data();
+            setUserRole(proveedorData.rol);
           } else {
-            console.error('No se encontró un administrador con este correo.');
+            console.error('No se encontró un rol para este usuario.');
           }
         } catch (error) {
           console.error('Error al obtener el rol del usuario:', error);
@@ -75,8 +90,8 @@ function Sidebar() {
                 </NavLink>
               </li>
               <li>
-                <NavLink to="/admin/aceptacion_servicios">
-                  <FaCogs /> ACEPTACIÓN DE SERVICIOS
+                <NavLink to="/admin/pagos_admin">
+                  <FaFileAlt /> Pagos 
                 </NavLink>
               </li>
               <li>
@@ -91,33 +106,35 @@ function Sidebar() {
             <>
               {/* Menú para Proveedores */}
               <li className="menu-item">
-                <NavLink to="/proveedor/usuarios" className="menu-header">
+                <NavLink to="/admin/usuariosp" className="menu-header">
                   <div className="menu-title">
                     <FaUsers /> USUARIOS
                   </div>
                 </NavLink>
               </li>
               <li className="menu-item">
-                <NavLink to="/proveedor/proveedores" className="menu-header">
+                <NavLink to="/admin/proveedoresp" className="menu-header">
                   <div className="menu-title">
                     <FaUsers /> PROVEEDORES
                   </div>
                 </NavLink>
               </li>
               <li className="menu-item">
-                <NavLink to="/proveedor/servicios" className="menu-header">
+                <NavLink to="/admin/servicios" className="menu-header">
                   <div className="menu-title">
                     <FaCogs /> SERVICIOS
                   </div>
                 </NavLink>
               </li>
-              <li className="menu-item">
-                <NavLink to="/proveedor/contratacion_servicios" className="menu-header">
-                  <div className="menu-title">
-                    <FaCogs /> CONTRATACIÓN DE SERVICIOS
-                  </div>
+           
+              <li>
+                <NavLink to="/admin/aceptacion_servicios">
+                  <FaCogs /> ACEPTACIÓN DE SERVICIOS
                 </NavLink>
               </li>
+              
+             
+              
             </>
           )}
         </ul>

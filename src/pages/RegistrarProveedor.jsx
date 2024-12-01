@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import '../styles/RegistrarProveedor.css';
-import { db } from '../services/proveedorService'; // Configuración de Firestore
+import { db, auth } from '../services/proveedorService'; // Configuración de Firestore y Auth
+import { createUserWithEmailAndPassword, sendEmailVerification } from 'firebase/auth';
 import { collection, addDoc } from 'firebase/firestore';
-import emailjs from 'emailjs-com'; // Para enviar correos electrónicos
 import { useNavigate } from 'react-router-dom';
 
 function RegistrarProveedor() {
@@ -33,18 +33,27 @@ function RegistrarProveedor() {
     }
 
     try {
-      // Generar un ID único (opcional) y agregarlo a los datos
+      // Paso 1: Guardar los datos en Firestore
       const proveedorData = {
         ...formData,
-        id: Math.random().toString(36).substr(2, 9), // Generar un ID único
+        estado: 'activo',
+        rol: 'Proveedores',
       };
 
-      // Guardar los datos del proveedor en Firestore
       const proveedorRef = collection(db, 'proveedores');
-      await addDoc(proveedorRef, proveedorData);
+      const docRef = await addDoc(proveedorRef, proveedorData);
 
-      // Enviar correo electrónico con las credenciales al proveedor
-      enviarCorreo(proveedorData);
+      // Paso 2: Crear el usuario en Firebase Authentication
+      const userCredential = await createUserWithEmailAndPassword(auth, formData.email, formData.password);
+      const user = userCredential.user;
+
+      // Paso 3: Enviar el correo de verificación
+      await sendEmailVerification(user, {
+        url: `http://localhost:5173/verification-complete?email=${encodeURIComponent(formData.email)}&password=${encodeURIComponent(formData.password)}`, // URL personalizada
+        handleCodeInApp: true,
+      });
+
+      alert('Proveedor registrado con éxito. Se ha enviado un correo de verificación.');
 
       // Resetear el formulario después de registrar
       setFormData({
@@ -62,42 +71,12 @@ function RegistrarProveedor() {
         rol: 'Proveedores',
       });
 
-      alert('Proveedor registrado con éxito. Se ha enviado un correo con las credenciales.');
-      navigate('/admin/proveedores'); // Redirigir a la lista de proveedores
+      // Redirigir a la lista de proveedores
+      navigate('/admin/proveedores');
     } catch (error) {
       console.error('Error al registrar proveedor:', error);
       alert('Error al registrar proveedor, por favor intente nuevamente');
     }
-  };
-
-  const enviarCorreo = (datosProveedor) => {
-    const { email, nombreProveedor, password } = datosProveedor;
-
-    // Configuración de parámetros para EmailJS
-    const templateParams = {
-      to_email: email, // Correo del proveedor
-      to_name: nombreProveedor, // Nombre del proveedor
-      message: `Hola ${nombreProveedor}, tu cuenta ha sido creada con éxito. Tus credenciales son:
-                Email: ${email}
-                Contraseña: ${password}
-                Por favor, cambia tu contraseña después de iniciar sesión.`,
-    };
-
-    emailjs
-      .send(
-        'service_s84dwco', // SERVICE_ID obtenido de EmailJS
-        'template_npsxkeo', // TEMPLATE_ID de tu plantilla
-        templateParams,    // Parámetros dinámicos para la plantilla
-        'uEXmVs0Eg5Oyely83' // PUBLIC_KEY obtenido de EmailJS
-      )
-      .then(
-        (response) => {
-          console.log('Correo enviado exitosamente:', response.status, response.text);
-        },
-        (error) => {
-          console.error('Error al enviar el correo:', error);
-        }
-      );
   };
 
   const handleChange = (e) => {
@@ -240,7 +219,7 @@ function RegistrarProveedor() {
           <button
             type="button"
             className="btn-cancelar"
-            onClick={() => navigate('/admin/proveedores')} // Redirige a la página de lista de proveedores
+            onClick={() => navigate('/admin/proveedores')} // Redirige a la lista de proveedores
           >
             Cancelar
           </button>

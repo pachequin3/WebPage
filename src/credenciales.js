@@ -1,8 +1,7 @@
 // Import the functions you need from the SDKs you need
 import { initializeApp } from "firebase/app";
-import { getAuth } from 'firebase/auth';
-// TODO: Add SDKs for Firebase products that you want to use
-// https://firebase.google.com/docs/web/setup#available-libraries
+import { getFirestore } from "firebase/firestore"; // Importa Firestore
+import { getAuth } from "firebase/auth";
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
@@ -11,9 +10,16 @@ const firebaseConfig = {
   projectId: "autoasiste-login-admin",
   storageBucket: "autoasiste-login-admin.appspot.com",
   messagingSenderId: "656042079468",
-  appId: "1:656042079468:web:6313cc0ec362be40a961c9"
+  appId: "1:656042079468:web:6313cc0ec362be40a961c9",
 };
 
 // Initialize Firebase
 const appFirebase = initializeApp(firebaseConfig);
+
+// Initialize Firestore and export it
+export const db = getFirestore(appFirebase);
+
+// Optional: export Auth if needed
+export const auth = getAuth(appFirebase);
+
 export default appFirebase;

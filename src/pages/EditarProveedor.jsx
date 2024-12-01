@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate, useLocation, useParams } from 'react-router-dom';
-import '../styles/EditarProveedor.css';
+import'../styles/EditarProveedor.css' ;
 import { db } from '../services/proveedorService';
 import { doc, updateDoc } from 'firebase/firestore';
 

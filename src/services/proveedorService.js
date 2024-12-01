@@ -1,5 +1,6 @@
 import { initializeApp } from "firebase/app";
 import { getFirestore } from "firebase/firestore";  // Importamos Firestore
+import { getAuth } from "firebase/auth";  // Importamos Authentication
 
 const firebaseConfig = {
   apiKey: "AIzaSyA0K7KLG952WidGpBfKE6dckU7posuPy8U",
@@ -9,9 +10,15 @@ const firebaseConfig = {
   messagingSenderId: "656042079468",
   appId: "1:656042079468:web:6313cc0ec362be40a961c9"
 };
-// Inicializamos Firebase solo para Firestore
-const appFirebase = initializeApp(firebaseConfig);
-const db = getFirestore(appFirebase);  // Inicializamos Firestore
 
-// Exportamos la base de datos para usarla en ServiciosAdmin
-export { db };
+// Inicializamos Firebase
+const appFirebase = initializeApp(firebaseConfig);
+
+// Inicializamos Firestore
+const db = getFirestore(appFirebase);
+
+// Inicializamos Firebase Authentication
+const auth = getAuth(appFirebase); 
+
+// Exportamos la base de datos y la autenticación
+export { db, auth };

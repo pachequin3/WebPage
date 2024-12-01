@@ -8,27 +8,34 @@ body {
 
 /* Contenedor General */
 .contenedor-servicios {
-  max-width: 1200px;
-  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
   padding: 20px;
+  background-color: #f9f9f9; /* Fondo claro */
 }
 
 h1, h2 {
   text-align: center;
   color: #00008B;
+  margin-bottom: 10px;
 }
 
 p {
   text-align: center;
   color: #333;
+  margin-bottom: 20px;
 }
 
 /* Tarjetas Familiares */
 .tarjetas-servicios {
-  display: flex;
-  flex-wrap: wrap;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   gap: 20px;
   justify-content: center;
+  width: 100%;
 }
 
 .tarjeta-servicio {
@@ -36,9 +43,7 @@ p {
   border-radius: 10px;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   padding: 20px;
-  width: 250px;
   text-align: center;
-  position: relative;
   transition: transform 0.3s ease;
 }
 
@@ -47,106 +52,40 @@ p {
 }
 
 .icono-servicio {
-  font-size: 3em; /* Tamaño grande para los íconos */
+  font-size: 3em;
   color: #00008B;
   margin-bottom: 15px;
 }
 
-/* Indicadores de Estado */
-.estado-indicador {
-  position: absolute;
-  top: 10px;
-  left: 10px;
-  width: 15px;
-  height: 15px;
-  border-radius: 50%;
-}
-
-.estado-indicador.verde {
-  background-color: green;
-}
-
-.estado-indicador.rojo {
-  background-color: red;
-}
-
-/* Menú Opciones (tres puntos) */
-.menu-opciones {
-  position: absolute;
-  top: 10px;
-  right: 10px;
-  cursor: pointer;
-}
-
-.menu-icono {
-  font-size: 1.5em; /* Tamaño más grande para tres puntos */
-}
-
-.menu-secundario {
-  position: absolute;
-  top: 25px;
-  right: 10px;
-  background-color: #fff;
-  border: 1px solid #ddd;
-  border-radius: 5px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
-  padding: 5px;
-  z-index: 10;
-}
-
-.menu-secundario button {
-  background: none;
-  border: none;
-  padding: 5px;
-  cursor: pointer;
-  text-align: left;
-}
-
-.menu-secundario button:hover {
-  background-color: #f0f0f0;
-}
-
-/* Botones Generales */
-button {
-  cursor: pointer;
-}
-
-.btn-solicitar, .btn-volver, .btn-agregar, .btn-guardar, .btn-cancelar {
+/* Botones */
+.btn-solicitar, .btn-gestionar, .btn-volver {
   background-color: #FFD700;
   color: #00008B;
   border: none;
-  padding: 10px 15px;
   border-radius: 5px;
+  padding: 10px 15px;
+  font-size: 14px;
   cursor: pointer;
   transition: background-color 0.3s ease;
+  margin-top: 10px;
 }
 
-.btn-solicitar:hover, .btn-volver:hover, .btn-agregar:hover, .btn-guardar:hover, .btn-cancelar:hover {
+.btn-solicitar:hover, .btn-gestionar:hover, .btn-volver:hover {
   background-color: #FFC000;
-}
-
-.btn-eliminar {
-  background-color: #FF6347;
-  color: #fff;
-  border: none;
-  padding: 5px 10px;
-  border-radius: 5px;
-}
-
-.btn-eliminar:hover {
-  background-color: #FF4500;
 }
 
 /* Vista de Detalle */
 .vista-detalle {
   margin-top: 20px;
+  width: 100%;
 }
 
 .tarjetas-listar {
-  display: flex;
-  flex-wrap: wrap;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   gap: 20px;
   justify-content: center;
+  width: 100%;
 }
 
 .tarjeta-lista {
@@ -154,88 +93,146 @@ button {
   border-radius: 10px;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   padding: 20px;
-  width: 350px; /* Más espacio para mostrar servicios */
-  text-align: center;
-  position: relative;
+  text-align: left;
   transition: transform 0.3s ease;
+  width: 100%;
 }
 
 .tarjeta-lista:hover {
   transform: translateY(-5px);
 }
 
-.imagen-lista {
-  width: 100%;
-  height: 150px;
-  object-fit: cover;
-  border-radius: 10px;
+.tarjeta-lista h3 {
+  margin-bottom: 10px;
+  color: #00008B;
 }
 
-/* Formulario Registro */
-.formulario-registro {
-  display: flex;
-  flex-direction: column;
-  gap: 15px;
-  background-color: #fff;
-  border-radius: 10px;
-  padding: 20px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  max-width: 600px;
-  margin: 0 auto;
-}
-
-.formulario-registro input,
-.formulario-registro select {
-  padding: 10px;
-  border-radius: 5px;
-  border: 1px solid #ccc;
-  width: 100%;
-}
-
-.formulario-registro button {
-  padding: 10px;
-  border-radius: 5px;
-  font-size: 14px;
-  transition: background-color 0.3s ease;
-}
-
-/* Factura */
-.factura {
-  background-color: #fff;
-  border-radius: 10px;
-  padding: 20px;
-  margin-top: 20px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-}
-
-.factura ul {
-  list-style: none;
-  padding: 0;
-}
-
-.factura li {
+.tarjeta-lista p {
+  color: #333;
   margin-bottom: 10px;
 }
 
-/* Botón Aceptar */
-.btn-aceptar {
-  background-color: #00008B;
-  color: #fff;
-  padding: 10px;
+.tarjeta-lista .btn-editar {
+  background-color: #FFD700;
+  color: #00008B;
   border: none;
   border-radius: 5px;
+  padding: 8px 12px;
+  font-size: 12px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
 }
 
-.btn-aceptar:hover {
+.tarjeta-lista .btn-editar:hover {
+  background-color: #FFC000;
+}
+
+/* Botón Volver */
+.btn-volver {
+  display: block;
+  margin: 20px auto;
+  background-color: #FFD700;
+  color: #00008B;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+.btn-volver:hover {
+  background-color: #FFC000;
+}
+
+/* Centrado para Listas */
+.lista-descripcion {
+  margin: 10px 0;
+}
+
+.lista-descripcion span {
+  display: block;
+  margin: 5px 0;
+}
+
+/* Responsivo */
+@media (max-width: 768px) {
+  .tarjeta-servicio, .tarjeta-lista {
+    width: 100%;
+  }
+
+  .contenedor-servicios {
+    padding: 10px;
+  }
+}
+/* Formulario de edición */
+.formulario-editar {
+  max-width: 600px;
+  margin: 20px auto;
+  padding: 20px;
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.formulario-editar h2 {
+  text-align: center;
+  color: #00008b;
+}
+
+.formulario-campos label {
+  display: block;
+  margin-bottom: 15px;
+}
+
+.formulario-campos label strong {
+  display: block;
+  margin-bottom: 5px;
+  color: #00008b;
+}
+
+.formulario-campos input,
+.formulario-campos textarea,
+.formulario-campos select {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  margin-top: 5px;
+}
+
+textarea {
+  resize: vertical;
+  height: 100px;
+}
+
+.formulario-botones {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 20px;
+}
+
+.formulario-botones .btn-guardar {
+  background-color: #00008b;
+  color: #fff;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.formulario-botones .btn-guardar:hover {
   background-color: #000066;
 }
 
-/* Botón Cancelar */
-.btn-cancelar {
-  background-color: #FF6347;
+.formulario-botones .btn-cancelar {
+  background-color: #ff6347;
   color: #fff;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
 }
 
-.btn-cancelar:hover {
-  background-color: #FF4500;
+.formulario-botones .btn-cancelar:hover {
+  background-color: #ff4500;
 }
